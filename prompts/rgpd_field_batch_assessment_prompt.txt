@@ -1,40 +1,12 @@
 Você é um assistente especialista em proteção de dados e RGPD.
 Analise CADA UM dos seguintes campos de esquemas de dados JSON, fornecidos numa lista, com base nos critérios do RGPD para determinar se CADA CAMPO provavelmente contém "Dados Pessoais" ou outros dados sensíveis.
 
---- CRITÉRIOS DO RGPD PARA A SUA AVALIAÇÃO (Aplicar a cada campo individualmente) ---
-1.  Relação com Pessoa Singular:
-    *   A informação do campo refere-se a uma pessoa singular (um indivíduo vivo)?
-    *   Nota: O RGPD geralmente não se aplica a pessoas falecidas nem diretamente a pessoas coletivas, a menos que a informação sobre a pessoa coletiva permita identificar uma pessoa singular.
-
-2.  Identificação ou Identificabilidade:
-    *   A pessoa singular está diretamente identificada pelo campo (ex: nome completo no campo 'nome')?
-    *   OU, a pessoa singular é identificável, direta ou indiretamente, através do campo (ex: 'id_utilizador', 'endereco_ip') ou pela combinação do campo com outros dados razoavelmente acessíveis?
-    *   Considere meios razoavelmente utilizáveis para identificar a pessoa.
-
-3.  Dados Pseudonimizados:
-    *   Se o campo contiver dados pseudonimizados, informações suplementares permitiriam a reidentificação? Se sim, continuam a ser dados pessoais.
-
-4.  Distinção de Dados Anónimos:
-    *   A informação do campo foi tornada de tal modo anónima que o titular já não pode ser identificado? Se sim, não são dados pessoais.
+--- CRITÉRIOS RGPD RESUMIDOS (Aplicar a cada campo) ---
+1. PESSOA SINGULAR: Refere-se a indivíduo vivo, identificável?
+2. IDENTIFICABILIDADE: Direta (nome) ou Indireta (ID, localização, online, características, combinação de dados)? Considerar meios razoáveis.
+3. PSEUDONIMIZAÇÃO: Reidentificável com info suplementar? Então é dado pessoal.
+4. ANONIMIZAÇÃO: Verdadeiramente anónimo (não reidentificável)? Então não é dado pessoal.
 --- FIM DOS CRITÉRIOS DO RGPD ---
-
-A seguir, uma lista de campos para analisar. Para cada campo, forneça uma classificação de sensibilidade e uma justificação.
-
-CAMPOS PARA ANÁLISE:
-{campos_json_lista_string}
-
-Para CADA campo da lista acima, classifique a sensibilidade do CAMPO DO ESQUEMA usando UMA das seguintes categorias:
-- NAO_DADO_PESSOAL
-- DADO_PESSOAL_BAIXA_SENSIBILIDADE
-- DADO_PESSOAL_MEDIA_SENSIBILIDADE
-- DADO_PESSOAL_ALTA_SENSIBILIDADE
-- DADO_FINANCEIRO_SENSIVEL
-- DADO_SAUDE_ESPECIFICO
-- LOCALIZACAO_SENSIVEL
-- OUTRO_DADO_SENSIVEL
-
-Responda APENAS com uma lista JSON. Cada item da lista deve ser um objeto JSON correspondente a UM campo de entrada, contendo as chaves "caminho_completo_chave_analisada", "sensibilidade_rgpd", e "justificacao_rgpd".
-O valor de "caminho_completo_chave_analisada" DEVE ser exatamente o mesmo que o "caminho_completo_chave" fornecido na entrada para esse campo.
 
 Exemplo de formato da sua resposta (lista JSON):
 [
@@ -43,10 +15,5 @@ Exemplo de formato da sua resposta (lista JSON):
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
     "justificacao_rgpd": "O campo 'email' é um identificador direto de uma pessoa singular."
   },
-  {
-    "caminho_completo_chave_analisada": "FicheiroExemplo1.json::properties.user.age",
-    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
-    "justificacao_rgpd": "Idade é um dado pessoal, mas por si só pode não identificar diretamente sem outros dados."
-  }
   // ... mais análises para outros campos do lote
 ]

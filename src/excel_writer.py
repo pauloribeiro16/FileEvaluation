@@ -1,13 +1,5 @@
 import pandas as pd
 
-# Colar aqui as definições de:
-# def apply_basic_styles_to_summary(writer, df, sheet_name): ...
-# def apply_styles_merge_and_highlight(writer, df, sheet_name, highlights_map): ...
-# (Assegure-se que elas funcionam com os DataFrames e estruturas de dados que main.py irá passar)
-# Por exemplo, apply_styles_merge_and_highlight não precisa mais de df, pode operar direto no writer e highlights_map
-# e saber o tamanho do df através de writer.sheets[sheet_name].max_row ou similar, ou recebendo len(df).
-# Vou simplificar e manter como estava, passando df.
-
 def apply_basic_styles_to_summary(writer, df, sheet_name):
     if df.empty:
         print(f"  [EXCEL_WRITER DEBUG] DataFrame para sumário '{sheet_name}' está vazio, pulando formatação.")
@@ -19,17 +11,14 @@ def apply_basic_styles_to_summary(writer, df, sheet_name):
     for col_num, value in enumerate(df.columns.values):
         worksheet.write(0, col_num, value, header_format)
         header_len = len(str(value)); max_data_len = 0
-        if value in df: # Check if column exists
-            col_series = df[value].dropna() # Drop NaNs before astype(str)
+        if value in df:
+            col_series = df[value].dropna()
             if not col_series.empty:
                 max_data_len = col_series.astype(str).str.len().max()
                 if pd.isna(max_data_len): max_data_len = 0
-            else: # Column is all NaNs or empty
-                max_data_len = 0
-
+            else: max_data_len = 0
         column_width = min(max(header_len, int(max_data_len)) + 5, 70)
         worksheet.set_column(col_num, col_num, column_width)
-
     for row_num in range(len(df)):
         for col_num in range(len(df.columns)):
             worksheet.write(row_num + 1, col_num, df.iloc[row_num, col_num], data_format)
@@ -39,7 +28,15 @@ def apply_basic_styles_to_summary(writer, df, sheet_name):
 def apply_styles_merge_and_highlight(writer, df, sheet_name, highlights_map):
     if df.empty:
         print(f"  [EXCEL_WRITER DEBUG] DataFrame para folha '{sheet_name}' está vazio.")
+        # Ainda assim, criar a folha e o cabeçalho se df.columns existir
+        if not df.columns.empty:
+            workbook = writer.book; worksheet = writer.sheets[sheet_name]
+            header_format = workbook.add_format({'bold': True, 'text_wrap': False, 'valign': 'vcenter', 'align': 'center', 'fg_color': '#4F81BD', 'font_color': 'white', 'border': 1})
+            for col_num, value in enumerate(df.columns.values):
+                 worksheet.write(0, col_num, value, header_format)
+            print(f"  [EXCEL_WRITER DEBUG] Cabeçalho escrito para folha vazia '{sheet_name}'.")
         return
+
     print(f"  [EXCEL_WRITER DEBUG] Aplicando estilos, união e realces para folha '{sheet_name}'...")
     workbook = writer.book; worksheet = writer.sheets[sheet_name]
     header_format = workbook.add_format({'bold': True, 'text_wrap': False, 'valign': 'vcenter', 'align': 'center', 'fg_color': '#4F81BD', 'font_color': 'white', 'border': 1})
@@ -50,10 +47,10 @@ def apply_styles_merge_and_highlight(writer, df, sheet_name, highlights_map):
         for color_hex in unique_colors:
             highlight_formats[color_hex] = workbook.add_format({'border': 1, 'valign': 'vcenter', 'fg_color': color_hex})
 
-    for col_num, value in enumerate(df.columns.values): # Write header
+    for col_num, value in enumerate(df.columns.values):
         worksheet.write(0, col_num, value, header_format)
 
-    for col_idx in range(len(df.columns)): # Process data rows
+    for col_idx in range(len(df.columns)):
         current_row_on_worksheet = 1
         while current_row_on_worksheet <= len(df):
             value_to_check = df.iloc[current_row_on_worksheet - 1, col_idx]
@@ -65,7 +62,7 @@ def apply_styles_merge_and_highlight(writer, df, sheet_name, highlights_map):
             if pd.isna(value_to_check):
                 worksheet.write(current_row_on_worksheet, col_idx, None, cell_format_to_use)
                 current_row_on_worksheet += 1; continue
-
+            
             count_identical = 1
             for next_df_row_idx in range(current_row_on_worksheet, len(df)):
                 if df.iloc[next_df_row_idx, col_idx] == value_to_check:
@@ -83,7 +80,7 @@ def apply_styles_merge_and_highlight(writer, df, sheet_name, highlights_map):
                 worksheet.write(current_row_on_worksheet, col_idx, value_to_check, cell_format_to_use)
             current_row_on_worksheet += count_identical
 
-    for col_idx, column_title in enumerate(df.columns): # Adjust column widths
+    for col_idx, column_title in enumerate(df.columns):
         max_len = len(str(column_title))
         if not df.empty and column_title in df:
             col_series = df[column_title].dropna()
