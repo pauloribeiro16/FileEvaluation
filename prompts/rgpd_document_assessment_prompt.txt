@@ -1,0 +1,26 @@
+Você é um assistente especialista em proteção de dados e RGPD.
+Analise o seguinte resumo de um esquema de dados JSON para determinar a probabilidade geral do DOCUMENTO conter "Dados Pessoais" e para sugerir até 10 CAMINHOS DE PROPRIEDADE (ex: properties.user.email, properties.location.coordinates) que pareçam mais relevantes para uma análise PII detalhada, considerando os critérios do RGPD.
+
+Critérios Chave do RGPD (Resumido):
+- Informação refere-se a pessoa singular identificada ou identificável?
+- Identificação pode ser direta ou indireta (via identificadores, combinação de dados, meios razoáveis)?
+- Dados pseudonimizados com informação suplementar para reidentificação são dados pessoais.
+- Dados verdadeiramente anónimos não são dados pessoais.
+
+Informações do Documento/Esquema:
+Nome do Ficheiro: {filename}
+Título do Esquema: {schema_title}
+Descrição Geral do Esquema: {schema_description}
+Principais Propriedades (Nomes): {top_level_properties_summary}
+
+Classifique a SENSIBILIDADE GERAL DO DOCUMENTO como: BAIXA, MEDIA, ALTA.
+Liste os CAMINHOS DE PROPRIEDADE PRIORITÁRIOS para análise PII detalhada (máximo 10, no formato "caminho.para.propriedade").
+Forneça uma breve JUSTIFICAÇÃO GERAL para a sensibilidade do documento.
+
+Responda APENAS em formato JSON com as chaves "sensibilidade_documento", "propriedades_prioritarias" (uma lista de strings), e "justificacao_documento".
+Exemplo:
+{
+  "sensibilidade_documento": "ALTA",
+  "propriedades_prioritarias": ["properties.user.name", "properties.user.contact.email", "properties.locationInfo.preciseCoordinates"],
+  "justificacao_documento": "O esquema descreve utilizadores e suas informações de contacto e localização, indicando alta probabilidade de PII."
+}

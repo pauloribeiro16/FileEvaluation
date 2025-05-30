@@ -1,0 +1,42 @@
+{
+  "FareCollectionSystem.json::properties.type": {
+    "sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.destinationStopName": {
+    "sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.occupancyLevel": {
+    "sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.travelDistance": {
+    "sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.passengerCount": {
+    "sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.transactionType": {
+    "sensibilidade_rgpd": "ERRO_LOTE_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.ticketTypeCode": {
+    "sensibilidade_rgpd": "ERRO_LOTE_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.originStopName": {
+    "sensibilidade_rgpd": "ERRO_LOTE_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.entryAreaCode": {
+    "sensibilidade_rgpd": "ERRO_LOTE_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  },
+  "FareCollectionSystem.json::properties.cardId": {
+    "sensibilidade_rgpd": "ERRO_LOTE_OLLAMA",
+    "justificacao_rgpd": "Falha na análise do lote."
+  }
+}
