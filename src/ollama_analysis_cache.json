@@ -1,507 +1,122 @@
 {
-  "FareCollectionSystem.json::properties.type": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'userEmail' (email) não é um identificador único e direto. A sua utilização diretamente para identificar uma pessoa singular é um meio razoavelmente utilizável, permitindo a identificação e contacto.  A ausência de informações adicionais, como nome, CPF, ou data de nascimento, aumenta a sensibilidade da informação."
-  },
-  "FareCollectionSystem.json::properties.destinationStopName": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'userEmail' é diretamente relacionada a uma pessoa singular (o usuário), pois é um endereço de e-mail que identifica de forma inequívoca um indivíduo. O uso direto de um endereço de e-mail para identificar uma pessoa é considerado um dado pessoal de alta sensibilidade sob os princípios do RGPD. A existência de um e-mail é suficiente para identificá-lo e permitir a sua comunicação com o titular, o que requer uma análise mais rigorosa em relação a todos os meios disponíveis para identificar e contactar a pessoa."
-  },
-  "FareCollectionSystem.json::properties.occupancyLevel": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'occupancyLevel' fornece informações específicas sobre o estado de um indivíduo transitório (bus) e, portanto, possibilita a identificação de uma pessoa individual específica (o usuário do ônibus) através da sua localização e histórico de uso. A relação direta com a pessoa singular (o usuário) é clara e o campo refere-se a um usuário real e identificável. A combinação de vários dados (condição de congestionamento) permite a identificação precisa do usuário, tornando-o um dado pessoal de alto risco."
-  },
-  "FareCollectionSystem.json::properties.travelDistance": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'travelDistance' contém dados de distância entre pontos de ônibus, o que permite a identificação direta do usuário. A distância entre pontos de ônibus é uma informação identificável que pode ser usada para rastrear a atividade individual de um usuário. O fato de conter uma distância entre pontos, neste contexto, é um dado pessoal significativo."
-  },
-  "FareCollectionSystem.json::properties.passengerCount": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'passengerCount' é diretamente atribuível a um indivíduo específico - o passageiro de um ônibus. A computação do 'passengerCount' é diretamente associada a uma pessoa singular, gerando um risco significativo de identificação e associabilidade. A utilização de 'passengerCount' sugere que o valor em si representa uma informação pessoal identificável do passageiro."
-  },
-  "FareCollectionSystem.json::properties.transactionType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'transactionType' descreve uma transação específica que pode ser diretamente associada a uma pessoa (por exemplo, 'Issue', 'ReIssue', 'Entry'). A presença de um código de transação, que embora possa ser um ID, em conjunto com o nome da transação, indica que a informação em questão pode ser usada para identificar um indivíduo específico, o que é considerado um risco de identificação significativo, conforme o RGPD. A natureza da transação ('Issue', 'ReIssue', etc.)  está intrinsecamente ligada a uma pessoa e, portanto, apresenta um alto risco de identificação."
-  },
-  "FareCollectionSystem.json::properties.ticketTypeCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'ticketTypeCode' é um código único do ticket, que de forma direta identifica uma transação específica de viagem (uma pessoa singular). A identificação direta do ticket de viagem é um dos elementos mais proeminentes que permitem a identificação da pessoa, e a sua utilização direta na sua descrição indica que é um dado pessoal de alto risco devido à sua potencial utilização para identificar e rastrear um indivíduo específico. O campo apresenta um risco elevado de identificação de uma pessoa individual."
-  },
-  "FareCollectionSystem.json::properties.originStopName": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'originStopName' é o nome de um ponto de origem de bus stop e, se for usada para identificar uma pessoa específica (por exemplo, identificar um usuário ou um cliente), automaticamente se torna um dado pessoal. A utilização do nome de uma pessoa singular para identificar uma pessoa real em um contexto de bus stop está diretamente relacionada à identificação de uma pessoa, e portanto, representa uma alta sensibilidade."
-  },
-  "FareCollectionSystem.json::properties.entryAreaCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'entryAreaCode' refere-se a um código de área de embarque específico, crucial para identificar o passageiro em relação ao ponto de origem e destino de um voo.  A utilização direta desse código, combinada com a identificação do passageiro (ex: nome completo, número de passagem), demonstra uma alta probabilidade de identificação direta de uma pessoa singular. Além disso, o código de área de embarque é um identificador crucial para garantir a sua identificação e o seu tratamento."
-  },
-  "FareCollectionSystem.json::properties.cardId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'cardId' e 'userEmail' são identificadores diretos do usuário e do cartão. Permitem identificar o usuário individualmente, através de contato direto, e a utilização de meios razoavelmente utilizáveis (como email) para rastreamento e identificação do titular. A falta de um identificador único adicional torna a identificação direta do usuário altamente provável."
-  },
-  "FareCollectionSystem.json::properties.stage": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'stage' (número de etapas) é um número único, que, embora possa ser utilizado para identificar o progresso de um cliente ou processo, por si só, não permite a identificação da pessoa singular do cliente. A sua única utilização é o número, o que pode ser utilizado para rastrear o progresso em um processo de negócio que envolve uma pessoa individual, tornando-o um dado pessoal.  A falta de informação de identidade, o que é o caso aqui, coloca em risco a proteção de dados."
-  },
-  "FareCollectionSystem.json::properties.equipmentId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave \"equipmentId\" contém um identificador único associado a um equipamento específico, que pode ser usado para identificar uma pessoa singular - o equipamento em si. A especificação de 'uniqueId' no campo 'equipmentId' sugere que o equipamento é um elemento de identificação do usuário que pode ser usado para identificar um indivíduo específico. A menção à 'verificação de dados' na descrição de 'equipmentId' implica que a informação pode ser utilizada para rastrear o uso de um equipamento específico, o que configura um risco de identificação de um indivíduo singular."
-  },
-  "FareCollectionSystem.json::properties.direction_id": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'direction_id' é um identificador de *direção* de veículo, associado a uma pessoa singular. A sua utilização no contexto de 'GTFS Realtime message-TripDescriptor' sugere uma relação direta com uma pessoa identificada por uma viagem específica.  A sua utilização no contexto do 'FareCollectionSystem' implica uma identificação de uma viagem que pode ter implicações de privacidade devido à sua natureza de 'direção' e sua ligação a um determinado 'user'."
-  },
-  "FareCollectionSystem.json::properties.equipmentSequenceNumber": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'equipmentSequenceNumber' refere-se a um número único de equipamento, crucial para identificar uma pessoa singular (um determinado equipamento).  A identificação direta do equipamento (e potencialmente do usuário que o utiliza) é uma das formas mais eficazes de identificar um indivíduo. A utilização de um número de identificação único, mesmo em contexto de equipamento, implica uma alta probabilidade de identificar uma pessoa individual, em particular em sistemas que geram e utilizam dados de equipamento. A ausência de qualquer informação que defina o indivíduo (como nome ou dados de identificação) é um sinalizador de alto risco para o tratamento de dados pessoais."
-  },
-  "FareCollectionSystem.json::properties.shiftOfOperation": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'shiftOfOperation'  fornece informações extremamente específicas e identificáveis sobre o veículo de transporte público e o operador.  A referência a '1', '2' e '3' indicam detalhes concretos que, se lidos isoladamente, permitem identificar o indivíduo (especialmente se o veículo e o operador são distintos). A natureza do 'shiftOfOperation' pode ser usada para rastrear e identificar a pessoa, tornando-o um dado pessoal de alta sensibilidade."
-  },
-  "FareCollectionSystem.json::properties.route_id": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'route_id' contém informações de identificação direta de uma pessoa singular: o endereço de rota do veículo em questão.  Essa informação, quando combinada com outros dados do 'GTFS Realtime', permite a identificação e rastreamento de uma pessoa específica, o que se enquadra na definição de dado pessoal sensível sob o RGPD."
-  },
-  "FareCollectionSystem.json::properties.trip_id": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'trip_id' (identificador único do bus) e o 'trip_name' (detalhes do trajeto) são elementos diretamente identificadores da pessoa singular do usuário (o usuário que está viajando). A combinação de 'trip_id' e 'trip_name' na descrição (especificando o horário e direção do trajeto) permite identificar o usuário em relação aos seus dados de viagens específicos.  A combinação do 'trip_id' com 'GTFS Realtime message-TripDescriptor' (detalhes do trajeto do GTFS) é um método indireto de identificação do usuário. Portanto, a combinação do 'trip_id' e 'trip_name' são dados pessoais, pois permitem identificar a pessoa com base em informações específicas de viagem."
-  },
-  "FareCollectionSystem.json::properties.originStopCategory": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'userEmail' (email) representa uma pessoa singular. O RGPD exige que se trate de informações que identificam uma pessoa, a menos que seja um link direto a um identificador mais sensível. O email é um identificador direto, permitindo rastreamento e identificação da pessoa."
-  },
-  "FareCollectionSystem.json::properties.vehicle_label": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'vehicle_label' contém o label de 'vehicle_label' que é um identificador direto para um usuário específico, dado que este label é crucial para a identificação do veículo. O label 'vehicle_label' em si, por si só, não é suficiente, mas a sua combinação com o 'user visible label'  (label do GTFS Realtime) implica que, em conjunto, permite a identificação de um usuário específico. A combinação cria um rastreamento de identidade do veículo, o que significa que o veículo é associado a uma pessoa, tornando-o um dado pessoal com alta sensibilidade."
-  },
-  "FareCollectionSystem.json::properties.fareForChild": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'fareForChild' descreve um evento específico que pode, em certas situações, permitir a identificação de uma pessoa singular (o usuário) com base em sua viagem. A natureza do 'fare' como um número único e de uma viagem específica (ou em conjunto com outras informações do usuário) sugere um alto grau de identificação.  Apesar de não ser um nome, a combinação do 'fare' com outras informações torna o campo altamente sensível para a proteção de dados."
-  },
-  "FareCollectionSystem.json::properties.transactionDateTime": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'transactionDateTime' contém data e hora de uma transação de compra específica, indicando a identidade do usuário. A presença de um timestamp, combinado com o nome do modelo, indica que a transação se refere a um indivíduo específico. Embora não contenha informações de identificação direta como nome, o timestamp é um elemento crucial para identificar a transação e, portanto, está em risco de ser utilizado para a identificação de pessoa singular. O tratamento de dados de transações (especialmente as datas) e a natureza do campo requerem um nível de proteção de dados consideravelmente elevado."
-  },
-  "FareCollectionSystem.json::properties.destinationStopId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'destinationStopId' representa um identificador único para um usuário específico, como um ponto de embarque. A mera presença do ID não o torna um dado pessoal isolado, mas a sua utilização no contexto do contexto da 'fareCollectionSystem' – que envolve a coleta de dados de viajantes – sugere um alto risco de identificação e, portanto, de proteção de dados.  A utilização de um ID específico para identificar um determinado usuário aumenta significativamente o risco de identificação do titular, conforme o RGPD."
-  },
-  "FareCollectionSystem.json::properties.originDestinationCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'originDestinationCode' contém um código de origem e destino que, de forma independente, pode ser usado para identificar uma pessoa singular. A combinação de dados de origem e destino, juntamente com os outros dados do esquema, apresenta um risco elevado de identificação de uma pessoa específica. A ausência de informações agregadas torna o código um identificador direto, colocando em risco a privacidade de indivíduos específicos."
-  },
-  "FareCollectionSystem.json::properties.currentTripCount": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'currentTripCount' em conjunto com o 'https://schema.org/Number' contém um número de viagens. Como o número de viagens pode ser usado para identificar diretamente uma pessoa singular - pois representa um indivíduo específico - esse campo é considerado um dado pessoal com alta sensibilidade, em consonância com o critério de Identificação Direta."
-  },
-  "FareCollectionSystem.json::properties.equipmentTypeCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'equipmentTypeCode' contém um código único que identifica um equipamento específico usado em uma transação de fare collection, pois o código é crucial para a identificação do cliente, permitindo rastrear transações e manter registros específicos. A combinação deste código, juntamente com outras informações do equipamento, cria um risco significativo de identificação de uma pessoa singular (o cliente que utiliza o equipamento). A sua natureza de código único, juntamente com a sua utilização direta, torna a identificação da pessoa singular uma preocupação considerável."
-  },
-  "FareCollectionSystem.json::properties.destinationStopCategory": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A informação 'destinationStopCategory' é um identificador específico da rota de viagem, pois corresponde diretamente a uma pessoa singular (o viajante). A sua utilização para rastrear e identificar a pessoa é direto e requer o acesso a dados pessoais com fins de acompanhamento da sua rota de viagem."
-  },
-  "FareCollectionSystem.json::properties.transactionVehicleNum": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'transactionVehicleNum' contém um número de veiculo, que, embora seja um identificador do veículo, é uma informação que, diretamente ou indiretamente, pode ser associada a um indivíduo específico (o proprietário do veículo).  O código do veículo é um identificador direto, e a combinação do número de veiculo com as transações permite, de forma razoavelmente utilizável, identificar a pessoa a quem se refere.  A análise do campo revela um alto risco de identificação e uso para fins pessoais."
-  },
-  "FareCollectionSystem.json::properties.fareForAdult": {
-    "sensibilidade_rgpd": "NÃO_DADO_PESSOAL",
-    "justificacao_rgpd": "O campo 'fareForAdult' é um número, e não uma informação que representa uma pessoa singular. Não há ligação direta com a identificação de uma pessoa, nem utilização de meios razoavelmente utilizáveis para identificar uma pessoa. Portanto, o campo não é um dado pessoal."
-  },
-  "FareCollectionSystem.json::properties.observationDateTime": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'observationDateTime' contém um timestamp de observação que representa um momento específico no tempo da interação com o usuário.  Embora seja um timestamp individual, ele é associado a uma observação específica de um indivíduo, tornando-o potencialmente identificável.  A possibilidade de reconstruir dados pessoais a partir desse timestamp, através de outras informações disponíveis no esquema, justifica a classificação como 'alta sensibilidade'."
-  },
-  "FareCollectionSystem.json::properties.equipmentCompanyCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'equipmentCompanyCode' contém um código de empresa que, por si só, é uma identificação direta da pessoa.  A combinação de este código com outros dados (como o endereço ou outros dados de equipamento) pode permitir identificar uma entidade de pessoa específica, o que configura o risco de identificação e tratamento de dados pessoais sob o RGPD.  A coleta e utilização de tais códigos requer rigorosa proteção e transparência."
-  },
-  "FareCollectionSystem.json::properties.transactionTypeDescription": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'transactionTypeDescription' contém uma descrição detalhada do tipo de transação. Isso sugere que a informação pode ser usada para identificar uma transação específica, e, potencialmente, para identificar o usuário transacionante (se o usuário se apresentar como a entidade que executa a transação). A combinação de 'transactionTypeDescription' com o 'transactionTypeId' indica um contexto que pode ser usado para identificar uma pessoa específica (o usuário) e, portanto, é considerado um dado pessoal com alta sensibilidade, considerando o impacto de um uso inadequado em GDPR."
-  },
-  "FareCollectionSystem.json::properties.exitAreaCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'exitAreaCode' é um código de identificação específico de um indivíduo alinhado ao seu ponto de embarque.  A utilização direta e inequívoca para identificar um indivíduo singular torna esta informação sensível, considerando o risco de identificação de pessoa e o tratamento do código como um identificador direto de uma pessoa singular (o passageiro)."
-  },
-  "FareCollectionSystem.json::properties.equipmentType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'equipmentType' contém o nome do equipamento de um usuário individual. Embora possa existir uma relação entre o equipamento e a pessoa (ex: usuário com equipamento específico), a mera atribuição de um nome de equipamento a um indivíduo singular, combinando com o contexto do campo, indica que o equipamento é, de facto, pessoal. O 'equipmentType' é a informação que permite identificar um usuário específico, o que justifica a classificação como dado pessoal de alta sensibilidade."
-  },
-  "FareCollectionSystem.json::properties.equipmentStopId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'equipmentStopId' refere-se a um identificador específico de uma pessoa singular (a instalação do equipamento associado a uma transação específica). A sua natureza, diretamente relacionada a um ativo de pessoa, permite a identificação e o rastreamento de uma pessoa. É um dado que permite identificar uma entidade individual, o que confere maior sensibilidade aos requisitos de proteção de dados do RGPD."
-  },
-  "FareCollectionSystem.json::properties.originStopId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'originStopId' contém dados pessoais pois identifica um indivíduo específico (o usuário) e, portanto, está diretamente relacionado a uma pessoa singular. A combinação de dados de localização, mesmo que aparentemente neutra, pode ser usada para identificar e rastrear um indivíduo, o que viola os requisitos de proteção de dados do RGPD, especialmente quando o uso destes dados é não-necessário e não se justifica com uma finalidade específica. A identificação direta e a potencial utilização de dados de localização para rastreamento são os principais fatores que colocam este campo em risco de violação do RGPD."
-  },
   "GtfsAccessPoint.json::properties.type": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'type' especifica que é um 'GtfsAccessPoint', que refere-se a uma entidade de hardware, e a natureza específica de 'tipo' indica a sua função como um ponto de acesso para uma rede de sistemas de gerenciamento de dados (GTSF). A inclusão de informação que identifica diretamente uma pessoa singular (ex: nome ou ID) em um contexto de hardware implica uma alta sensibilidade de dados pessoais.  A utilização de 'type' e o caminho 'properties.type' na chave, indica que a informação neste campo pode ser utilizada para identificar a pessoa com base em dados de hardware que a associam a um indivíduo específico."
+    "justificacao_rgpd": "O campo 'type' é crucial para identificar a natureza da entidade em questão (um ponto de acesso a um serviço GTFS).  Informações de modelo/ficheiro de contexto *podem* ser usadas para identificar uma pessoa singular se vinculadas a um utilizador específico (ex: um cliente, um administrador). A sua especificidade (tipo) implica um alto risco de identificação, em conformidade com o RGPD."
   },
   "GtfsRoute.json::properties.type": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'type' indica explicitamente que se trata de 'NGSI Entity type', o que define a informação como uma entidade individual de pessoa. A existência de um 'userEmail' direto para identificação de um indivíduo é um indicador direto de sensibilidade, pois permite a identificação e rastreamento da pessoa subjacente. A ausência de informações adicionais que suportem a identidade da pessoa torna esta informação particularmente sensível."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'type' contém uma identificação direta do modelo/ficheiro de contexto, que pode ser usado para identificar um utilizador específico. A natureza do campo sugere que é um identificador direto de uma pessoa individual, possivelmente relacionada a um utilizador ou sistema."
   },
   "GtfsRoute.json::properties.routeColor": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'routeColor' contém um valor de 'Same as GTFS' que especifica um código específico para uma rota de trânsito.  Este valor é diretamente relacionado a uma pessoa individual (o usuário do veículo), e permitir a identificação do usuário é um risco significativo de recolher e usar dados pessoais, em linha com o RGPD.  A sua natureza de código de rota permite identificar diretamente o usuário em relação à rota que está sendo utilizada, o que é um risco considerável."
+    "justificacao_rgpd": "O campo 'nome do modelo/ficheiro de contexto' contém um nome de modelo ou ficheiro que pode ser usado para identificar e rastrear um utilizador específico. A informação é diretamente relacionada a uma pessoa e é usada para identificar o contexto específico do modelo. A sua utilização pode ser associada a um utilizador individual, sendo, portanto, um dado pessoal."
   },
   "GtfsRoute.json::properties.routeTextColor": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'routeTextColor' contém o valor 'gtfsRoute' que é um identificador de rota de veículo de transporte público. A relação com uma pessoa singular é direta, pois o valor 'routeTextColor' identifica o tipo específico de rota que o veículo de transporte público está a usar. A utilização de um identificador específico para um veículo de transporte público implica um alto nível de sensibilidade, pois permite identificar e rastrear um indivíduo específico."
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto: GtfsRoute' refere-se a um nome de modelo específico, o que pode ser usado para identificar e rastrear um utilizador ou sistema. A natureza 'RouteTextColor' sugere uma configuração ou parâmetro relacionado a uma rota de transporte. Isso justifica a classificação de alta sensibilidade."
   },
   "GtfsRoute.json::properties.routeType": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'routeType' contém dados de natureza pessoal, pois descreve um tipo específico de rota de transporte, com a possibilidade de identificar a pessoa que o utiliza. A informação é diretamente ligada a uma entidade individual. A falta de anonimato da rota é alta, pois, mesmo sem informações de identificação direta, pode ser possível identificar o usuário e sua rota (ex: destino, rota)."
+    "justificacao_rgpd": "O campo 'routeType' refere-se a um identificador específico de uma rota de transporte, o que o torna um dado pessoal. A informação está diretamente associada a uma pessoa (o utilizador, ou sistema que gera a rota) e o seu valor está ligado a uma rota de transporte específica. A existência deste campo, por si só, indica que trata de dados pessoais."
   },
   "GtfsRoute.json::properties.routeSortOrder": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'routeSortOrder' apresenta uma combinação de informações de 'Número' (identificador, dado numérico) que se traduz em dados pessoais. Embora a relação com o 'GTFS' seja uma relação de mapeamento entre dois 'Number's, a natureza direta do 'routeSortOrder' (uma faixa de rota) e o seu uso como um 'Número' singular para determinar a rota a ser seguida, demonstra a possibilidade de identificar um indivíduo específico. A combinação de informação numérica e uma relação para uma rota específica, torna esta informação particularmente sensível sob os pressupostos do RGPD."
+    "justificacao_rgpd": "O campo 'routeSortOrder' contém o nome de um modelo específico, que pode identificar uma pessoa singular com base no contexto de uso ou organização, especialmente se este modelo tiver uma relevância específica. A utilização de um nome de modelo pode ser um indicador de uma entidade identificável. É um dado sensível porque pode estar associado a uma pessoa ou um grupo de pessoas."
   },
   "GtfsRoute.json::properties.operatedBy": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'operatedBy' contém o nome de uma agência (agency) que opera a rota. Embora não seja um nome de pessoa, a referência explícita a uma agência, juntamente com o contexto de 'operar' implica um risco significativo para a proteção de dados. A agência tem o potencial de identificar a entidade que está sendo operada, tornando-a um dado pessoal sensível. A natureza da relação 'operar' implica que a agência pode ter acesso a dados pessoais e, portanto, está sujeita às exigências do RGPD."
+    "justificacao_rgpd": "O campo 'operatedBy' contém um nome de modelo, que é uma identificação direta de uma pessoa singular (o modelo/ficheiro de contexto). A identificação de um modelo específico de um sistema implica que é um usuário ou um processo que opera o modelo, e portanto, é um dado pessoal. A combinação com 'https://schema.org/Text' torna esta informação extremamente relevante para indivíduos e, potencialmente, para associações de negócios e instituições de dados."
   },
   "GtfsRoute.json::properties.shortName": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'shortName' contém o nome do modelo de um sistema de texto, que é uma identificação direta de uma pessoa singular (o 'GTFS Route'). A existência do nome do modelo em si, mesmo que curta, indica que a informação pertence a uma pessoa e, portanto, é um dado pessoal sob os critérios do RGPD."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'shortName' contém um nome de modelo/ficheiro de contexto que pode ser usado para identificar um utilizador específico, particularmente se a informação for usada para direcionar a informação a um utilizador em particular. A sua natureza de metadado do esquema sugere que, embora não seja diretamente informação pessoal, é crucial para a identificação de um utilizador individual."
   },
   "KeyCardSwitch.json::properties.rt": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'rt' contém a chave 'userEmail' que, de forma direta, é uma identificação de um usuário específico.  A combinação dessa chave com o 'userEmail' permite, em circunstâncias razoáveis, identificar e rastrear um indivíduo, tornando-o um dado pessoal de alta sensibilidade, especialmente em relação ao contato direto e identificação pessoal. Além disso, a chave 'userEmail' parece ser um identificador crucial para o uso da chave 'keyCardSwitch' e pode ser usada para rastrear o uso da chave, o que aumenta o risco de identificação e coleta de dados."
+    "justificacao_rgpd": "O campo 'rt' (Property. The Resource Type of KeyCardSwitch) é um identificador da chave que contém informações sobre o modelo ou arquivo de contexto. Essa chave, por si só, pode ser usada para identificar um utilizador específico, tornando-a um dado pessoal de alta sensibilidade."
   },
   "KeyCardSwitch.json::properties.stateofcard": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'stateofcard' fornece informações diretamente sobre uma pessoa singular (o estado da chave de cartão), permitindo que um usuário identifique o cartão associado a ele. A informação, por si só, é suficiente para identificar uma pessoa. A análise de 'validCardInserted' e 'validCardNotInserted' permite determinar a identidade de uma pessoa, pois indica se o cartão foi inserido ou não, o que é um indicador direto de sua utilidade e, portanto, de sua sensibilidade."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'KeyCardSwitch' é um 'Nome do Modelo/Ficheiro de Contexto' que se refere a um indivíduo específico (o usuário ou sistema). A informação do modelo/ficheiro de contexto, combinado com a sua 'estado do cartão' ('validCardInserted' ou 'validCardNotInserted'), pode ser usado para identificar e rastrear um usuário específico.  A análise do estado do cartão, por si só, pode revelar informações sobre a identidade do usuário."
   },
   "KeyCardSwitch.json::properties.n": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'KeyCardSwitch' possibilita a identificação direta de um usuário específico (o usuário que está utilizando a chave). A identificação direta, combinada com a utilização de dados como o 'n' (nome do modelo), para fins de registro e/ou utilização em outro sistema, configura um risco significativo para os direitos fundamentais do titular dos dados, conforme o RGPD. A questão da identificação da pessoa é central, tornando a informação de alto risco."
+    "justificacao_rgpd": "O campo 'n' contém o nome completo do modelo/ficheiro de contexto.  Isso constitui um dado pessoal diretamente pois representa uma pessoa individual com um identificador único, e, em muitas situações, a sua presença é a chave principal para identificar a pessoa.  A existência do nome completo e do caminho completo do ficheiro de contexto implica o risco de identificação da pessoa."
   },
   "KeyCardSwitch.json::properties.if": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'if' contém um endereço de email, e este é um identificador direto de uma pessoa singular. A análise do método de identificação implícito (por exemplo, com base no endereço IP) e a possível utilização de cookies ou outros métodos, são cruciais para avaliar a sensibilidade do dado."
+    "justificacao_rgpd": "O campo 'if' é uma chave de metadado do esquema, utilizada para definir propriedades específicas.  Não contém dados de uma pessoa individual ou identificável, e a sua existência sugere o potencial para identificação da pessoa."
   },
   "KeyCardSwitch.json::properties.type": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'keyCardSwitch' contém informações que podem ser usadas para identificar uma pessoa singular (o proprietário da chave). A informação 'type' é um identificador específico do 'keyCardSwitch', e a sua descrição indica que é um 'KeyCardSwitch' e, portanto, implica uma identificação direta e potencial reidentificação do titular da chave."
+    "justificacao_rgpd": "O campo 'type' contém o nome completo de um modelo/ficheiro de contexto, que é uma informação de identificação direta de uma pessoa singular.  A identificação de uma pessoa singular é central no RGPD."
   },
   "ResourceReport.json::properties.type": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'resourceReport_ID' é uma identificação direta do recurso específico. A combinação do 'resourceReport_ID' com outros dados do usuário (como nome de usuário ou informações de login) possibilita a identificação do usuário, conforme o RGPD.  A falta de um identificador único e distintivo e a possibilidade de combinação com outros dados pessoais tornam esta informação altamente sensível para o abrigo do RGPD."
+    "justificacao_rgpd": "O campo 'type' é um metadado do esquema que define o tipo de dados da propriedade pai, não contendo dados pessoais em si. Sua descrição é de 'Property'. A presença de 'ResourceReport' indica que o campo armazena informações sobre um recurso específico, o que é altamente sensível devido à sua natureza de identificação do recurso. É crucial garantir que este metadado, por si só, não revele informações identificadoras sobre o utilizador."
   },
   "ResourceReport.json::properties.ResourceReport.actuator": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'userEmail' é um endereço de email e, na falta de outros dados, é um identificador direto de um indivíduo. A sua utilização e a sua capacidade de ser usado para identificar uma pessoa singular são significativas, pois é o meio de comunicação direto do utilizador ao sistema. A ausência de outras informações únicas dificulta a identificação da pessoa, tornando-o um dado pessoal de alta sensibilidade."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' contém o nome de um modelo de transporte específico que pode identificar um utilizador ou sistema. Embora o nome em si não seja pessoal, a sua presença sugere que a informação pode ser usada para identificar ou rastrear um utilizador específico, o que pode justificar a classificação como 'média sensibilidade'."
   },
   "ResourceReport.json::properties.ResourceReport.actuator.properties.ActuatorType.preferredLabel": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'ActuatorType.preferredLabel' contém uma enumeração de valores (combustionEngine, electric, electricWithSupport, human).  Esta enumeração, ao ser uma escolha de valores predefinidos para um objeto, presume a existência de uma pessoa singular que está sendo identificada por estes valores. A combinação destes valores com a 'actuatorType' pode, em combinação, permitir a identificação da pessoa se um processo de rastreamento for realizado.  A natureza 'predefinida' dos valores e a sua relação com a 'actuatorType' implicam um alto risco de identificação de uma pessoa singular."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'ResourceReport' refere-se a um modelo de dados específico de um utilizador ou sistema. A 'preferredLabel' é um valor para um modelo (Model), que, por si só, pode ser considerado um dado pessoal, pois identifica um indivíduo específico. A informação sobre o 'Model' é fundamental para a identificação do utilizador."
   },
   "ResourceReport.json::properties.ResourceReport.location": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'location' contém informações geográficas específicas (endereço de bike parking station) que permitem identificar um indivíduo. A localização, por si só, é um dado pessoal e, na presença de mais informações geográficas (ex: coordenadas), se torna mais sensível. O risco de identificação de uma pessoa singular é considerável, dado o contexto de 'bike parking station' que é um local específico."
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' contém o nome de um modelo específico, que pode identificar diretamente uma pessoa individual (o usuário que está interagindo). A identificação é direta e implica uma pessoa singular. O campo também contém um caminho de URL específico, o que sugere a localização de um ponto de interesse real, o que pode ser considerado uma identificação."
   },
   "ResourceReport.json::properties.ResourceReport.meansOfTransport": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'meansOfTransport' identifica explicitamente o meio de transporte do recurso. A combinação de 'Mobiliteitsdienst' (Serviço de Mobilidade) e 'vervoermiddel' (Tipo de Transporte) permite, de forma razoavelmente utilizável, identificar um indivíduo específico.  Isso constitui uma combinação de informações sensíveis, pois a identificação de um indivíduo por meio de um meio de transporte específico é um elemento crucial para o acesso a informações pessoais.  Os meios razoavelmente utilizáveis para identificação incluem o 'vervoermiddel' em si e a relação entre o 'Mobiliteitsdienst' e o 'vervoermiddel' fornecida."
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' é essencial para identificar uma pessoa específica, que pode ser um modelo ou arquivo de contexto relacionado a um utilizador ou sistema.  A identificação direta de uma pessoa é inerente ao campo."
   },
   "ResourceReport.json::properties.ResourceReport.meansOfTransport.properties.MeansOfTransport.preferredLabel": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'preferredLabel' contém 'userEmail' que é um identificador direto da pessoa individual. A possibilidade de uso de 'userEmail' para identificar e contactar a pessoa singular, com meios razoavelmente utilizáveis, é alta, tornando-o um dado pessoal de alta sensibilidade, especialmente se estiver associado a outras informações que poderiam permitir a identificação da pessoa."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' contém um nome de modelo (ResourceReport) que pode, dependendo do contexto, identificar uma pessoa singular. O 'preferredLabel' é um valor específico que se refere a um modelo, o que sugere uma identificação direta. A combinação com 'ResourceReport' e 'Properties' adiciona um nível de risco potencial."
   },
   "ResourceReport.json::properties.ResourceReport.number": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'number' no recurso 'ResourceReport' contém um número de recurso único que, sob o contexto do esquema, claramente indica uma identificação direta de uma pessoa singular. A análise do processo de criação do recurso de 'ResourceReport' e dos dados de referência associados permite identificar a pessoa a quem o número se refere, com recursos razoavelmente utilizáveis. A ausência de metadados ou informações adicionais de identificação torna esta a avaliação mais apropriada."
+    "justificacao_rgpd": "O campo 'number' contém um valor numérico que pode ser usado para identificar uma pessoa individual. A informação precisa ser usada em conjunto com outros dados para identificar a pessoa, e portanto é um dado pessoal."
   },
   "ResourceReport.json::properties.ResourceReport.reportTime": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'reportTime' refere-se a um ponto em tempo específico, que, por si só, indica o momento em que uma pessoa individual foi envolvida. Essa informação é inerentemente pessoal, pois revela a identidade e o momento em que a pessoa está envolvida em um processo, tornando-a sensível ao RGPD (especialmente o critério de Identificação Direta). A sua utilização para gerar relatórios de recursos, mesmo que em um contexto de gestão de dados, implica que a identidade da pessoa original está comprometida."
+    "justificacao_rgpd": "O campo 'reportTime' contém informações de um modelo/ficheiro de contexto associado a uma pessoa específica (o modelo). A identificação direta de um indivíduo é crucial, pois o modelo, ou o ficheiro, podem ser utilizados para rastrear e identificar a pessoa.  A sua presença representa uma informação individual e, portanto, alta sensibilidade."
   },
   "ResourceReport.json::properties.ResourceReport.service": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'service' contém informações que identificam um usuário específico, como 'userEmail'.  A existência de um email individualizado, associado diretamente a uma pessoa, é um dos principais elementos que justificam a classificação como dado pessoal com alta sensibilidade."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'name' (ResourceReport) contém o nome do modelo/ficheiro de contexto de uma pessoa singular, o que implica uma sensibilidade potencialmente alta. A identidade do utilizador é associada a este nome específico."
   },
   "ResourceReport.json::properties.ResourceReport.status": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'status' contém uma informação crucial que identifica um indivíduo específico (um recurso de ResourceReport). A informação 'status' é essencial para entender o estado de um recurso de informação. Sem essa informação, o recurso não pode ser utilizado. A combinação da informação de 'status' com outros dados do recurso pode permitir a identificação do indivíduo específico, tornando-o um dado pessoal sensível conforme o RGPD."
+    "justificacao_rgpd": "O campo 'status' é uma chave que representa um estado específico de um recurso. Embora possa não estar diretamente ligado a uma pessoa singular, o estado pode ser usado para identificar e rastrear um utilizador ou sistema que se refere ao recurso.  A identidade do utilizador pode ser rastreada através do estado de um recurso."
   },
   "ResourceReport.json::properties.ResourceReport.status.properties.ResourceStatus.preferredLabel": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'preferredLabel' contém um valor específico ('reserved') que, em conjunto com o contexto, sugere que o 'User' é uma pessoa singular com informações importantes associadas. A utilização de um valor específico como 'reserved' indica que a informação pode ser relacionada a uma pessoa singular e, portanto, é considerada um dado pessoal com alto risco de tratamento sensível."
+    "justificacao_rgpd": "O campo 'preferredLabel' contém uma informação diretamente relacionada a um recurso específico de um utilizador.  Dado que esta informação pode ser utilizada para identificar um utilizador ou distinguir-se de outros recursos, é classificado como dado pessoal de alta sensibilidade, em conformidade com o RGPD."
   },
   "ResourceReport.json::properties.ResourceReport.type": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'UserID' é um identificador único que permite a identificação direta de uma pessoa singular. A chave 'UserEmail' fornece uma identificação direta e permite contato, o que significa que o campo é considerado um dado pessoal sensível sob os critérios do RGPD devido à sua potencial utilização para identificação e rastreamento da pessoa."
+    "justificacao_rgpd": "O campo 'type' especifica o tipo de recurso, que pode ser usado para identificar um utilizador ou sistema específico, e portanto é um dado pessoal. A combinação do 'type' com 'http://purl.org/dc/terms/type' é suficiente para identificar a pessoa individual, especialmente em conjunto com outras propriedades do schema. A identificação de um modelo específico é essencial para a sua utilização no contexto do RGPD."
   },
   "ResourceReport.json::properties.ResourceReport.type.properties.ResourceType.preferredLabel": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'preferredLabel' refere-se a uma informação que, na sua totalidade, identifica uma pessoa singular.  A Enumeração 'chargingStation', 'parkingSpace', 'room', 'seating', e 'vehicle' claramente estabelece um nome específico para um indivíduo. A utilização desta lista (e possivelmente a relação com o 'userEmail') permite identificar e rastrear um usuário específico, o que torna esta informação de alta sensibilidade."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'ResourceReport' e 'preferredLabel' são informações de contexto sobre um utilizador específico, o que torna a identificação da pessoa singular possível, dependendo do contexto e da ligação com outros dados. A chave 'preferredLabel' é um valor de enumeração que especifica o tipo de informação que o utilizador de ResourceReport pode ter, o que se alinha com a necessidade de proteger os dados pessoais."
   },
   "System_alerts.json::properties.type": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'type' do schema especifica que o campo 'type' contém 'System_alerts'. A descrição do campo indica que o 'type' está relacionado com um sistema, o que sugere a possibilidade de uma interação direta com uma entidade singular (pessoa), especialmente considerando que os alertas são sistematicamente gerados. A natureza 'system_alerts' implica uma conexão com um indivíduo, tornando a identificação direta possível através do sistema e da sua interação, o que coloca em risco a proteção de dados em relação à privacidade da pessoa."
+    "justificacao_rgpd": "O campo 'System_alerts' é um identificador direto de um modelo específico ou arquivo, o que torna a informação de um sistema de alerta potencialmente pessoal. A presença de um nome de modelo ou arquivo associado a um indivíduo específico significa que ele pode ser usado para identificar um utilizador."
   },
   "System_alerts.json::properties.last_updated": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'last_updated' contém uma data e hora que, na sua totalidade, permite a identificação da pessoa. Embora seja uma data, a atualização no POSIX time, de um certo ponto, pode revelar informações relevantes sobre a pessoa (ex: data de nascimento, data de identificação). A falta de anonimização imediata, combinada com a existência de um timestamp, justifica a classificação como de alta sensibilidade."
+    "sensibilidade_rgpd": "DADO_PESSOAL_MEDIA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' pode, em teoria, revelar informações que identificam uma pessoa, especialmente se estiver associado a um utilizador específico. A atualização do 'last_updated' é um timestamp, que, se combinado com outros campos, pode indicar um utilizador, especialmente se estiver ligado a algum tipo de identificador."
   },
   "System_alerts.json::properties.ttl": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'ttl' contém um número de segundos que representa o tempo antes de uma atualização do feed ser aplicada. Embora o valor em si não seja diretamente pessoal, a sua natureza de ",
-    " timestamp de atualização de feed para um indivíduo específico, indica que este campo pode ser usado para identificar um indivíduo individual e, portanto, é considerado um dado pessoal com alto risco de tratamento no contexto do RGPD. A capacidade de usar este número em qualquer contexto (rastreamento, análise de dados, etc.) demonstra o potencial de identificação.": ")}”}```python exibir a resposta JSON para a classe de sensibilidade.  O exemplo acima demonstra que a classificação em "
+    "sensibilidade_rgpd": "DADO_PESSOAL_BAIXA_SENSIBILIDADE",
+    "justificacao_rgpd": "O campo 'Nome do Modelo/Ficheiro de Contexto' contém um nome específico de um modelo ou arquivo, o que, em muitos casos, pode ser considerado um dado pessoal, mas na ausência de outra informação que o identifique, é menos sensível do que dados mais diretamente identificáveis (como 'id_utilizador')."
   },
   "System_alerts.json::properties.version": {
     "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'GBFS version number' é uma informação de identificação direta da pessoa singular (a versão do GBFS). A presença desse número específico, ao ser usado para associar o feed à pessoa, garante a identificação direta e, portanto, a classificação como dado pessoal.  A sua utilização, mesmo em formato de identificador de versão, é crucial para a identificação individual do usuário do feed."
-  },
-  "System_alerts.json::properties.data": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'data' é essencialmente um conjunto de alertas do sistema. Embora possa ser usado para identificar o usuário, a ausência de informações distintas (como nome ou ID único) torna a identificação direta da pessoa singular (no sentido de identificar um indivíduo específico) possível. A natureza do campo é, por definição, uma lista de alertas e não representa uma informação pessoal que permita a identificação de um indivíduo, portanto, apresenta alto risco de violação do RGPD."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.alert_id": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'alert_id' refere-se a um identificador único para um alerta, que, se acessado diretamente, permite identificar o indivíduo cuja alerta está associado. A sua natureza, como um identificador direto, demonstra uma alta sensibilidade, pois pode revelar informações diretamente identificáveis sobre a pessoa a quem se refere."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.type": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'type' ('Type of alert') descreve uma informação extremamente pessoal, pois indica um tipo de alerta específico que pode ser usado para rastrear um indivíduo. A natureza específica do 'type' (ex: alerta de fraude, problema de saúde) significa que o campo é altamente sensível e precisa de proteção robusta, pois o contato direto com o indivíduo pode estar envolvido.  A falta de anonimização direta é um sinal de alerta, pois a identificação do usuário é inerente ao conceito do alerta."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.times": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'times' contém informações de momento (times) que podem identificar a pessoa singular. A natureza dos dados (momento) permite a identificação direta da pessoa, ou seja, uma pessoa específica em determinada situação. A disponibilidade de utilizadores razoáveis para identificar a pessoa (ex: data de nascimento, data de registro, local de atividade) torna a identificação direta alta. Além disso, a informação, embora em formato de data, pode ser combinada com outros dados para identificar a pessoa."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.times.items.properties.start": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'start' contém um timestamp de início de alerta, que, em conjunto com outras informações no esquema, demonstra uma forte ligação à identidade de uma pessoa individual. A capacidade de rastrear o início de um alerta específico, e potencialmente identificar a pessoa que o iniciou, cria uma forte associação direta e real com a pessoa singular, o que configura um alto risco de violação de privacidade e, portanto, implica uma alta sensibilidade para o tratamento de dados pessoais conforme o RGPD."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.times.items.properties.end": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'end' contém um timestamp, que representa o tempo de um evento.  Embora possa ser usado por si só, o seu valor específico (um timestamp de um evento) permite identificar e rastrear uma pessoa singular.  A existência de um timestamp, combinada com o contexto de 'alerts', torna a identificação e rastreamento de uma pessoa específica, através do seu 'end' e 'time', uma possibilidade significativa,  e, portanto, sujeita a rigorosos requisitos de proteção de dados, dada a natureza dos dados potencialmente fornecidos."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.station_ids": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'station_ids' é um array de identificadores de stations para os quais o alertamento se aplica. A combinação destes identificadores, por si só, permite a identificação e ligação de uma pessoa individual específica. A ausência de qualquer informação adicional sobre a pessoa singular torna esta informação particularmente sensível, pois oferece uma maneira de rastrear uma pessoa individual distinta, o que é um requisito fundamental do RGPD."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.region_ids": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'region_ids' contém identifiers de regiões. A identificação de regiões é uma informação diretamente associada a uma pessoa singular, pois permite a identificação de um indivíduo específico. A ausência de qualquer combinação ou informação adicional torna a identificação de uma pessoa singular altamente provável."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.url": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'url' na URL é altamente sensível.  Embora possa ser usado para identificar a pessoa, a URL em si é uma referência direta ao local de acesso ao sistema, e, em muitos casos, é a *única* forma de identificar uma pessoa singular específica. A natureza da URL - que se refere a uma localização concreta no sistema - indica uma alta sensibilidade, dado que essa localização já é identificador direto de um indivíduo. Não se trata de um dado anonimizado, mas de uma referência direta a uma pessoa singular, o que configura o risco de identificação."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.summary": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'summary' fornece um resumo específico de uma pessoa, indicando informações pessoais diretamente relacionadas a uma entidade individual. A natureza do resumo, que descreve uma pessoa, significa que a identificação direta é possível, tornando-o um dado pessoal sensível."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.description": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'description' contém uma descrição do alerta que, embora detalhada, pode revelar informações identificáveis sobre o usuário (ex: tipo de alerta, problema enfrentado, sistema envolvido) que, se fornecidas, poderiam ser usadas para identificar o indivíduo. A descrição é apresentada de forma geral e não se limita a uma pessoa singular específica. A possibilidade de combinação de diferentes dados (ex: nome, endereço, ID) e a natureza aberta da descrição (o que pode incluir informações sobre o usuário) torna a informação altamente sensível."
-  },
-  "System_alerts.json::properties.data.properties.alerts.items.properties.last_updated": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'last_updated' indica o tempo em que a informação foi alterada, e, dada a sua natureza de atualização de informações de alerta, indica um valor de identidade ou identificação de um usuário específico. Esta informação é crucial para fins de rastreamento e identificação de um usuário em um contexto de alerta. O fato de ser uma informação de 'última atualização' sugere que a informação será utilizada para identificar e rastrear um usuário, tornando-a um dado pessoal com alto risco de vazamento ou uso indevido."
-  },
-  "TransportStation.json::properties.type": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'TransportStation' contém a URL do veículo de transporte, que por si só, pode identificar uma pessoa individual (ex: o motorista ou o proprietário do veículo).  A URL serve como um identificador direto e, em combinação com outras informações do serviço, pode permitir a identificação de um indivíduo específico.  O RGPD exige que se proteja os dados pessoais do utilizador, mesmo que estes usem outros meios para identificar a pessoa."
-  },
-  "TransportStation.json::properties.dateLastReported": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'dateLastReported' contém um timestamp que, em conjunto com o formato ISO8601 UTC, permite identificar o usuário específico em relação ao período de reporte de dados. A sua natureza de 'timestamp' e a sua capacidade de ser diretamente associado a uma pessoa singular (e, por extensão, a uma entidade identificável) configuram este campo como um dado pessoal de alta sensibilidade, pois o acesso a esta informação pode ser usado para identificar e rastrear uma pessoa individual."
-  },
-  "TransportStation.json::properties.refPointOfInterest": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'refPointOfInterest' contém dados que podem ser usados para identificar uma pessoa singular, como nome, endereço e outros dados de localização. A combinação de esses dados com outros campos do esquema (como 'User' ou 'Contact') torna a identificação direta possível. Isso se alinha diretamente com o critério de 'Identificação Direta' e implica que o dado em questão representa um dado pessoal sob o RGPD."
-  },
-  "TransportStation.json::properties.stationType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'stationType' contém um código de tipo de estação de transportes (aerialLift, bus, cableTram, ferry, funicular, monorail, rail, subway, trolleybus, tram). A identificação de uma estação de transportes específica para uma pessoa singular é diretamente possível, pois é uma identificação única. Além disso, o campo pode ser usado para identificar a pessoa (por exemplo, em uma aplicação de transporte específico). A combinação de múltiplos códigos de tipo de estação permite uma identificação mais precisa do que um único código. A informação sobre o tipo de estação de transportes é altamente pessoal e requer tratamento cuidadoso para garantir o RGPD."
-  },
-  "TransportStation.json::properties.locationType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'locationType' especifica um local de transporte (stop ou estação) que é diretamente associado a um indivíduo, pois a localização em si pode ser utilizada para identificar e rastrear uma pessoa específica. A natureza 'Generic intersection' na classe 'location_type' indica uma localização que não se relaciona com nenhuma outra 'location_type' específica, indicando a identificação direta de uma pessoa. Além disso, a utilização do 'userEmail' como identificador direto para a pessoa individual é um ponto crítico."
-  },
-  "TransportStation.json::properties.parentStation": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'parentStation' contém o ID de uma estação de transporte, que é uma identificação direta da localização de uma pessoa. Isso permite a identificação específica de uma estação, de modo que o campo está sujeito ao critério de Identificação Direta e, portanto, representa um dado pessoal de alta sensibilidade, dado que a localização do usuário/estação é relevante para fins de rastreamento e associação a outras informações, podendo levar à identificação de indivíduos específicos."
-  },
-  "TransportStation.json::properties.levelId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'levelId' identifica uma localização específica e, de forma direta, permite identificar o local onde o objeto 'TransportStation' está localizado. A posição da localização é crucial para o contexto do dispositivo e é, portanto, consideravelmente sensível. A combinação deste ID com outros dados do sistema (como 'userEmail' ou 'deviceID') possibilitaria a identificação de um usuário específico, atingindo o critério de Identificação Direta do RGPD. A existência de um ID único e potencialmente associado a uma pessoa singular (mesmo que não seja um nome completo) representa um risco significativo para a privacidade."
-  },
-  "TransportStation.json::properties.platformCode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'platformCode' contém um identificador de plataforma específico para um tipo de plataforma (localização_type) que atribui um número único a cada plataforma.  Portanto, a identificação de uma plataforma específica (e por consequência, de um indivíduo) é direta e permite a identificação da pessoa singular. A ausência de informações adicionais torna a identificação mais previsível, mas a sua natureza de identificador direto justifica a classificação de 'alta sensibilidade'."
-  },
-  "TransportStation.json::properties.zoneId": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'zoneId' é crucial para a operação do 'TransportStation'. Ela representa um identificador único para uma área geográfica específica dentro do sistema, o que implica uma identificação direta de um indivíduo (o cliente) que está a utilizar a área de serviço. A associação do 'zoneId' com um endereço ou localização específica, que é fundamental para a operação do sistema, torna a informação de alto nível e potencialmente sensível. A ausência de informações de identificação mais específicas (como nome, endereço) no campo 'zoneId' sugere que não se trata de uma pessoa singular, mas sim de um identificador geográfico."
-  },
-  "TransportStation.json::properties.wheelChairAccessible": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'wheelChairAccessible' contém informações que identificam uma pessoa singular, detalhando o acesso de um usuário a um local específico (estacionamento). A presença de '0' e '1' indicam a disponibilidade e restrições de acesso, e a referência ao 'PMR user' e 'PRM user' sugere uma identificação direta da pessoa, especialmente em relação ao acesso a um serviço específico."
-  },
-  "TransportStation.json::properties.contractingAuthority": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'contractingAuthority' contém um nome de pessoa, que por si só, configura uma fonte de identificação direta. A informação é diretamente relacionada a uma pessoa singular, permitindo a identificação dessa pessoa. A existência de um nome de pessoa é um elemento crucial para a sua utilização, que requer um nível de sensibilidade elevado dado o RGPD."
-  },
-  "TransportStation.json::properties.contractingCompany": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'contractingCompany' (nome da empresa) contém o nome do contratante. Embora seja uma empresa, a combinação de nome e nome da empresa, por si só, pode ser suficiente para identificar uma pessoa singular, especialmente se houver outras informações da empresa associadas.  A utilização do nome da empresa para identificar um cliente específico, em uma situação de tratamento de dados, configura o risco de identificação de uma pessoa singular, conforme o RGPD."
-  },
-  "TransportStation.json::properties.webSite": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'webSite' contém o endereço web do site da empresa, o que implica uma ligação direta à pessoa singular (usuário) e permite a identificação da pessoa (nome do site) através de meios razoavelmente utilizáveis. A empresa, ao fornecer este acesso, tem obrigação de garantir a proteção dos dados pessoais dos utilizadores e de aderir às regras de proteção de dados."
-  },
-  "TransportStation.json::properties.installationMode": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'installationMode' descreve um estado do sistema de um cliente (localização relativa ao ground reference) e, enquanto tal, pode ser considerada um dado pessoal significativo, pois fornece informações que, de forma alguma, permitem identificar a pessoa a quem se refere. A informação não é um nome, mas um valor de localização que pode ser usado para rastreá-lo, tornando-a uma informação potencialmente identificável a partir de outros dados e processos."
-  },
-  "TransportStation.json::properties.dimension": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'dimension' contém um valor estruturado com um código de unidade (MTR) que representa o formato de um 'dimension' (largura, altura, profundidade) de um objeto. Este valor é fundamental para o próprio modelo e, se fornecido diretamente a uma pessoa, poderia ser utilizado para identificar um indivíduo específico. A ausência de informações adicionais que permitam a identificação de uma pessoa única torna este campo de alto risco para a proteção de dados, pois o valor em si pode ser utilizado para identificar o indivíduo."
-  },
-  "TransportStation.json::properties.dimension.properties.height": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'height' é um valor quantitativo e específico de uma pessoa (a altura do estação), o que o torna um dado pessoal de alta sensibilidade. A característica inerente do valor é identificar um indivíduo específico. A informação não é simplesmente uma descrição factual e pode ser utilizada para identificar a pessoa."
-  },
-  "TransportStation.json::properties.dimension.properties.width": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'width' do 'TransportStation' é uma medida quantitativa do tamanho de uma Station, e de acordo com o RGPD, a quantificação de dados de transportes de forma bruta pode ser considerada um dado pessoal, especialmente se a estação de transportes for utilizada para identificar um indivíduo específico ou para rastrear um indivíduo. A ausência de informações de identificação (ex: nome, número de identificação) torna a identificação direta da pessoa singular por meio da mera leitura do valor da medida mais provável."
-  },
-  "TransportStation.json::properties.dimension.properties.depth": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'depth' fornece informações de identificação direta para a pessoa singular que se trata de um 'Station' específico.  A informação 'depth' diretamente identifica e permite identificar um indivíduo (o 'Station' em si). Essa identificação é crucial para o RGPD, pois a ausência de um identificador direto levanta preocupações significativas sobre o tratamento de dados pessoais."
-  },
-  "TransportStation.json::properties.inventory": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'inventory' refere-se a um identificador único para um item específico dentro de uma coleção de dados pessoais.  A descrição 'locationType' é 0, 1, 3, 4, e está diretamente ligada ao identificador do item, o que implica uma identificação direta da pessoa individual que está associada a esse item. A capacidade de identificar precisamente a localização de um item, que pode ser um indivíduo, é um risco significativo para o RGPD."
-  },
-  "TransportStation.json::properties.inventory.properties.nbOfIOPoint": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'nbOfIOPoint' é um número de referência, o que implica um tratamento de dados pessoais. A sua utilização pode ser associada a dados que permitem identificar um usuário específico (em termos de sua entidade no sistema).  O RGPD exige uma avaliação de risco para determinar se o tratamento é adequado, e a utilização desta informação por si só requer a análise do contexto e do destino final dos dados. A utilização do número de pontos de entrada como um dado pessoal implica que a identificação do usuário é, de alguma forma, possível, o que justifica a classificação de 'DADO_PESSOAL_ALTA_SENSIBILIDADE'."
-  },
-  "TransportStation.json::properties.inventory.properties.nbOfLane": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'nbOfLane' é diretamente referenciado a um identificador único de uma pessoa singular (o proprietário da estação). A sua atribuição a um número identifica explicitamente o indivíduo, permitindo identificar com precisão e, portanto, ser considerado um dado pessoal. A ausência de qualquer informação adicional que possa permitir a identificação direta ou indireta do proprietário da estação é um ponto crucial para o cumprimento do RGPD."
-  },
-  "TransportStation.json::properties.inventory.properties.nbOfPlatform": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'nbOfPlatform' no esquema transportStation contém números de plataforma associados a indivíduos específicos (individuos). A existência de um número de plataforma único para cada pessoa única (uma plataforma) torna a informação altamente identificável. A capacidade de recorrer a números de plataforma para identificar uma pessoa específica é o elemento chave que aproxima o campo da proteção de dados.  O recurso de identificação de números de plataforma, juntamente com a possibilidade de associar a plataforma a uma pessoa, indica fortemente que o campo pode ser considerado um dado pessoal."
-  },
-  "TransportStation.json::properties.inventory.properties.PlatformType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'PlatformType' (que descreve a plataforma de software a fim de servir aos usuários) é a chave principal para a identificação de um usuário específico, uma vez que a sua utilização, por si só, indica que se trata de uma pessoa singular. A natureza do 'PlatformType' é de facto-um valor que, por si só, permite a identificação da pessoa, dado que representa o tipo de sistema de uma pessoa. A sua utilização, juntamente com outros campos, permite rastrear e identificar a pessoa singular pelo sistema."
-  },
-  "TransportStation.json::properties.stationConnected": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'stationConnected' contém o endereço de uma estação de transporte, que, sem contexto adicional, representa uma pessoa singular.  A atribuição de uma estação específica a um indivíduo é um identificador direto e representa uma pessoa singular. A existência de um endereço, mesmo em uma estrutura de dados estruturada, implica a possibilidade de identificar e rastrear uma pessoa individual, em conformidade com o RGPD."
-  },
-  "TransportStation.json::properties.stationConnected.items.properties.stationType": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'stationType' descreve uma informação de transporte específica, relacionada a uma pessoa individual. A ausência de informações que permitam a identificação direta da pessoa (ex: nome) e a possibilidade de identificar o transportador através do 'stationType' (por exemplo, um endereço que facilita a localização) significam que a informação pode ser usada para identificar e rastrear um indivíduo específico, o que configura uma alta sensibilidade de acordo com o RGPD."
-  },
-  "TransportStation.json::properties.stationConnected.items.properties.linesConnected": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'linesConnected' contém um identificador específico de linhas de transportes de veículos, o que implica a identificação de uma pessoa singular (o motorista ou o operador do veículo). A combinação deste identificador com outros dados de rastreamento (como coordenadas GPS) permite identificar a pessoa a quem se refere, tornando-o um dado pessoal de alta sensibilidade devido à possibilidade de identificar um indivíduo específico."
-  },
-  "TransportStation.json::properties.services": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave \"services\" contém informações sobre o serviço que está a ser prestado, especificamente o endereço de serviços de transportação.  A natureza dos serviços de transportação – e de que modo o sistema de transportes, em si, pode ser usado para identificar um indivíduo – implica a possibilidade de identificar um indivíduo específico através da utilização da informação.  A descrição do campo 'services'  indica que trata de serviços de transporte, o que implica um alto nível de identificação e potencial para a utilização de dados pessoais para fins de ligação com esses serviços e posterior identificação do indivíduo.  Para aplicar o critério de Identificação Direta, seria necessário explorar como os dados associados a este serviço podem ser diretamente ligados a uma pessoa singular, permitindo-se a identificação da pessoa.**"
-  },
-  "TransportStation.json::properties.services.properties.purchaseDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'purchaseDevice' parece conter informações de identificação direta da pessoa física (utilizando o endereço de máquina para compra de dispositivos). A presença de dados sobre máquinas para a compra de tickets, como o endereço do dispositivo, é um dado pessoal porque permite identificar uma pessoa singular. A utilização de máquinas para o processo de compra de tickets pode implicar em um padrão de comportamento do utilizador que permite a sua identificação e rastreamento, configurando-se assim em uma situação de risco de dados pessoais."
-  },
-  "TransportStation.json::properties.services.properties.interactiveDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'interactiveDevice' revela se o dispositivo é um kiosk (interativo), o que indica a existência de um usuário específico. A informação 'interactiveDevice' é fundamental para compreender se o usuário é um indivíduo. A presença de 'interactiveDevice' exige a identificação direta de um usuário, pois permite caracterizar o dispositivo utilizado para interação com o usuário. A utilização de 'interactiveDevice' é um dado essencial para o tratamento adequado de indivíduos, e por isso, é considerado um dado pessoal com alta sensibilidade."
-  },
-  "TransportStation.json::properties.services.properties.timetableDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'timetableDevice' relaciona-se diretamente a um indivíduo, especificamente um sujeito que tem interesse no tempo, mas a informação que descreve a data e hora do envio de um trajeto de trem (informação de tempo) pode ser usada para identificar a pessoa. O uso de 'timetableDevice' pode implicar o envio de informações pessoais para otimizar ou rastrear a atividade de um usuário específico, e pode se utilizar de meios razoavelmente utilizáveis para identificá-lo (a pessoa que está utilizando o dispositivo, por exemplo)."
-  },
-  "TransportStation.json::properties.services.properties.voiceDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'voiceDevice' possibilita identificar um usuário específico (o usuário que está usando o dispositivo) através do tipo de dispositivo, o que implica uma identidade, dado que não é um dispositivo genérico ou administrativo. O `deviceType` (ex: 'VoiceStation') é um identificador direto do usuário, e a sua utilização por um usuário específico significa a identificação do usuário, sob os pressupostos de que o dispositivo é atribuído a ele."
-  },
-  "TransportStation.json::properties.services.properties.informationBoardDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'userEmail' é o principal método de identificação do usuário. A utilização de um email como identificador direto e direto para uma pessoa singular, permitindo contacto e identificação por meio de diversas formas (ex: solicitação de login, comunicação de serviços), configura um risco significativo de proteção de dados.  A ausência de outras formas de identificação, como nome ou número de telefone, torna o email um dado altamente sensível."
-  },
-  "TransportStation.json::properties.services.properties.messageDevice": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'messageDevice' rastreia detalhes específicos sobre o dispositivo de comunicação utilizado por um usuário. A especificação de 'device' implica um vínculo direto com uma pessoa singular (o usuário) e, se combinado com outras informações (ex: endereço IP, login, etc.), pode levar à identificação do usuário. A capacidade de rastrear o dispositivo sugere um risco significativo de identificação do usuário, representando um alto grau de sensibilidade para o RGPD."
-  },
-  "TransportStation.json::properties.services.properties.shelters": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'shelters' contém informações que, sob determinadas circunstâncias, podem ser usadas para identificar e rastrear um usuário específico (o usuário do abrigo). A natureza 'rain' (chuva) associada ao 'shelters' sugere um contexto específico e individualizado, aumentando o risco de identificação e rastreamento.  Embora a informação em si não seja um nome completo, a combinação com o 'shelters' e o 'rain' cria um perfil potencial que pode ser utilizado para rastrear um usuário em particular, o que leva à sensibilidade de dado pessoal."
-  },
-  "TransportStation.json::properties.services.properties.restBench": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'restBench' pertence a um modelo de serviços, referindo-se a uma atividade específica, ligada a uma pessoa individual ('cliente'). A existência de 'benches' e a atividade de 'restare' indicam claramente um tratamento de dados pessoais.  A informação é fundamental para o funcionamento do serviço, e pode ser usada para rastreamento e perfilamento do usuário, o que a torna uma informação pessoal."
-  },
-  "TransportStation.json::properties.services.properties.emergencyPhone": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'emergencyPhone' representa informações diretamente identificativas de uma pessoa (o número de um telefone de emergência). A utilização de números de telefone de emergência é um meio razoavelmente utilizável para identificar uma pessoa em um contexto de telemetria, o que configura um risco de identificação direto. A existência de um 'emergencyPhone' em si constitui uma informação pessoal sensível, dada a sua natureza identificativa e potencial para ser usada para fins de rastreamento, discriminação ou exclusão."
-  },
-  "TransportStation.json::properties.services.properties.defibrillator": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'defibrillator' está diretamente ligado à identificação de um indivíduo específico (o indivíduo que possui um defibrilador). A natureza do campo – que descreve um componente técnico – implica um alto nível de risco e privacidade. A presença de um número de identificação do tipo defibrillator e a relação com o indivíduo tornam a identificação direta e, portanto, a informação de alto risco."
-  },
-  "TransportStation.json::properties.services.properties.wheelChairAccessible": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'wheelChairAccessible' especifica o estado de um recurso para um indivíduo específico (um usuário de cadeira de rodas). A presença de uma informação que associa um usuário de cadeira de rodas a um recurso específico implica um alto nível de identificação. O estado de acessibilidade é um dado pessoal que pode ser usado para identificar um indivíduo, tornando-o um dado pessoal sensível conforme os requisitos do RGPD."
-  },
-  "TransportStation.json::properties.paymentAccepted": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'paymentAccepted' contém dados de pagamento específicos de uma pessoa (o usuário), o que significa que a pessoa singular está em questão. A capacidade de identificar o usuário (pelo endereço de pagamento) representa um risco significativo para a privacidade, pois permite a identificação direta do titular do cartão de pagamento. A relação é direta, e o uso de meio razoavelmente utilizáveis (método de pagamento) para identificar o usuário, é crucial para o cumprimento do RGPD."
-  },
-  "TransportStation.json::properties.currencyAccepted": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'currencyAccepted' é um campo de formato de moeda e, portanto, a sua utilização para identificar uma pessoa específica ou conectar-se a uma pessoa individual é diretamente relevante para o RGPD. A utilização de valores monetários, em si, implica uma relação com a identificação de uma pessoa individual, o que aumenta a sensibilidade e está em conformidade com os critérios do RGPD."
-  },
-  "TransportStation.json::properties.constructionDate": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'constructionDate' (data de construção) é crucial para rastrear a origem e a identidade do objeto/constituído. A utilização desta data em conjunto com o 'userEmail' (email) implica a identificação direta de uma pessoa individual, permitindo a localização, rastreamento e possivelmente a tomada de decisões relacionadas a um indivíduo específico. É um dado pessoal altamente sensível devido à sua natureza identificadora."
-  },
-  "TransportStation.json::properties.commissioningDate": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'commissioningDate' contém informações de identidade de uma pessoa singular (o proprietário da estação de transmissão). A data de 'commissioning' é um dado pessoal crucial para a identificação, pois reflete o início do processo de instalação e utilização do equipamento. A sua existência e o seu valor de negócio, em conjunto, tornam este dado pessoal."
-  },
-  "TransportStation.json::properties.architect": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'architect' descreve a criação de uma infraestrutura de transportes e, em particular, o design de uma estação. Embora não se trate de uma pessoa singular como um 'usuário' em geral, a descrição detalhada do design de uma estação, com informações sobre a identidade do arquiteto, pode ser usada para identificar um indivíduo específico. Além disso, a informação sobre a estação é presumivelmente vinculada a uma pessoa, tornando-a uma fonte de dados pessoais."
-  },
-  "TransportStation.json::properties.featuredArtist": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'featuredArtist' revela o nome de um artista, uma característica individual que pode ser usada para identificar um indivíduo específico na lista de artistas em questão. A existência de um nome de artista singular representa uma alta sensibilidade para o RGPD, pois permite a identificação direta de uma pessoa."
-  },
-  "UserID.json::properties.rt": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "A chave 'UserID' é o identificador direto de uma pessoa singular. O campo 'rt' é o caminho de um arquivo de contexto, que por si só não indica o conteúdo do campo. No entanto, a chave 'UserID' é a principal fonte de identificação para o usuário, e a sua natureza, ao ser um identificador direto, indica uma sensibilidade significativa do RGPD. A análise que se faz aqui é de identificar um único individuo, por mais que se trate de um identificador de arquivo de contexto."
-  },
-  "UserID.json::properties.userid": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'UserID' (ID do paciente/usuário) contém a identificação direta de uma pessoa singular, essencial para rastrear e proteger os dados de saúde e utilização de dispositivos médicos. A utilização do 'userid' como identificador de um indivíduo específico está diretamente ligado à proteção de dados e implica um risco significativo para a privacidade."
-  },
-  "UserID.json::properties.n": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'UserID' no contexto 'UserDetails' contém um identificador único do usuário. A existência de um 'UserID' neste contexto, no contexto do RGPD, implica uma relação com uma pessoa singular, permitindo identificar e rastrear um indivíduo.  A utilização de um 'UserID' como um identificador direto para rastrear uma pessoa singular é um risco significativo de proteção de dados, devido ao potencial de uso para fins de identificação e rastreamento."
-  },
-  "UserID.json::properties.if": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'UserID' (ID do Usuário) é a chave principal do esquema e, por si só, contém a informação de identificação direta de uma pessoa singular. A chave 'if' está relacionada ao UserID e pode ser usada para criar uma identificação única, mas a sua totalidade é a informação que reflete uma pessoa individual."
-  },
-  "UserID.json::properties.type": {
-    "sensibilidade_rgpd": "DADO_PESSOAL_ALTA_SENSIBILIDADE",
-    "justificacao_rgpd": "O campo 'UserID' contém a chave de identificação do usuário.  A natureza da chave ('UserID') própria já indica que trata de uma pessoa singular. A utilização desta chave para rastrear e identificar um indivíduo específico é fundamental para cumprir o requisito de proteção de dados, em particular o princípio de minimização e anonimato. É crucial determinar se o 'UserID' tem características que permitiriam a identificação do usuário, mesmo que indiretamente. A ausência de qualquer identificador específico nesta chave torna o dado de alta sensibilidade."
+    "justificacao_rgpd": "O campo 'version' contém o número de versão do feed GBFS, que pode ser usado para identificar uma pessoa singular, especialmente se for o caso de um modelo específico ou arquivo de contexto. A identificação direta de um modelo específico é um dado pessoal."
   }
 }

@@ -62,7 +62,7 @@ def run_analysis_pipeline():
             properties_to_send_to_ollama.append({"unique_key": unique_key, "description": description})
 
     total_new_to_analyze = len(properties_to_send_to_ollama)
-    print(f"  [Fase 2] {total_new_to_analyze} novas propriedades para Ollama (total únicas: {len(all_unique_properties_to_analyze)}, cacheadas: {len(ollama_cache)}).")
+    print(f"  [Fase 2] {total_new_to_analyze} novas propriedades para Ollama (total únicas: {len(all_unique_properties_to_analyze)}, Cached: {len(ollama_cache)}).")
 
     for idx, field_to_analyze in enumerate(properties_to_send_to_ollama):
         unique_key = field_to_analyze["unique_key"]
@@ -72,7 +72,7 @@ def run_analysis_pipeline():
         # print(f"  [Fase 2] Analisando nova propriedade {idx + 1}/{total_new_to_analyze}: {unique_key}") 
         time.sleep(0.2) # Reduzido o delay, ajuste se o Ollama sobrecarregar
         
-        analysis_result = ollama_analyzer.analyze_single_field_with_ollama(unique_key, description)
+        analysis_result = ollama_analyzer.analyze_single_field_with_ollama_chat(unique_key, description) # CHAMAR A NOVA FUNÇÃO
         ollama_cache[unique_key] = analysis_result
         newly_analyzed_count +=1
 
