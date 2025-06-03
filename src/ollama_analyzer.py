@@ -1,136 +1,147 @@
+# src/ollama_analyzer.py
 import json
-import os # Adicionado para os.path.splitext
+import os
 import requests
 import time
 import traceback 
 import utils 
 
-# --- Configurações do Ollama ---
-OLLAMA_CHAT_ENDPOINT = "http://localhost:11434/api/chat" # NOVO ENDPOINT
-OLLAMA_MODEL = "gemma3:1b" # CONFIRME O SEU MODELO
+# --- Configuration ---
+OLLAMA_CHAT_ENDPOINT = "http://localhost:11434/api/chat"
+OLLAMA_MODEL = "qwen3:1.7b" # CONFIRM YOUR MODEL (e.g., "gemma:2b")
 OLLAMA_REQUEST_TIMEOUT = 240 
 
-# Variável global para guardar o system prompt carregado
-_system_prompt_content = None
+# Cache for loaded prompt components
+_prompt_cache = {}
 
-def get_system_prompt():
-    """Carrega e retorna o system prompt, guardando-o em cache na memória."""
-    global _system_prompt_content
-    if _system_prompt_content is None:
-        _system_prompt_content = utils.load_prompt_template("rgpd_single_field_assessment_prompt.txt")
-        if not _system_prompt_content:
-            print("[OLLAMA ERRO CRÍTICO] System prompt não pôde ser carregado! As análises falharão.")
-            # Poderia levantar uma exceção aqui ou retornar um valor que indique falha
-            _system_prompt_content = "ERRO: System prompt não carregado." 
-    return _system_prompt_content
+def _load_prompt_component(filename):
+    """Loads a prompt component from file and caches it in memory."""
+    if filename not in _prompt_cache:
+        content = utils.load_prompt_template(filename)
+        if not content:
+            print(f"[OLLAMA PROMPT ERRO] Failed to load prompt component: {filename}")
+            _prompt_cache[filename] = f"ERROR: Prompt component '{filename}' not loaded."
+        else:
+            _prompt_cache[filename] = content
+    return _prompt_cache[filename]
 
-def analyze_single_field_with_ollama_chat(unique_field_key, field_description):
+def _build_ollama_messages(field_info):
     """
-    Analisa um único campo com Ollama usando a API /api/chat para manter contexto.
-    unique_field_key: string no formato "filename.json::path.to.property"
-    field_description: string da descrição da propriedade
+    Builds the 'messages' list for the Ollama chat API.
+    field_info: dict containing model_name_context, full_field_path, field_name, field_description
     """
-    log_prefix = f"[OLLAMA_CHAT {unique_field_key}]"
-    print(f"{log_prefix} Iniciando análise via API de Chat...")
+    system_instructions = _load_prompt_component("system_instructions_rgpd_expert.txt")
+    user_task_template = _load_prompt_component("user_task_and_field_info_template.txt")
+    response_examples = _load_prompt_component("response_format_examples.txt")
+
+    if "ERROR:" in system_instructions or "ERROR:" in user_task_template or "ERROR:" in response_examples:
+        return None # Indicates a critical error in loading prompts
+
+    # Inject field-specific info into the user task template
+    user_message_content = user_task_template.format(
+        model_name_context=field_info["model_name_context"],
+        full_field_path=field_info["full_field_path"],
+        field_name=field_info["field_name"],
+        field_description=field_info["field_description"]
+    )
+
+    # Construct the full user message, including response examples for few-shot prompting
+    # The examples help the model adhere to the format and task.
+    full_user_prompt_with_examples = f"{user_message_content}\n\n--- RESPONSE FORMAT EXAMPLES ---\n{response_examples}"
+
+    return [
+        {"role": "system", "content": system_instructions},
+        {"role": "user", "content": full_user_prompt_with_examples}
+    ]
+
+def _parse_ollama_model_response(model_response_str, log_prefix):
+    """Parses the JSON string returned by the LLM."""
+    try:
+        analysis_from_model = json.loads(model_response_str)
+        if isinstance(analysis_from_model, dict) and \
+           "pii_sensitivity_assessment" in analysis_from_model and \
+           "gdpr_justification" in analysis_from_model:
+            return analysis_from_model
+        else:
+            print(f"{log_prefix} ERRO: Model's JSON response has unexpected format: {model_response_str[:200]}...")
+            return {"pii_sensitivity_assessment": "ERROR_MODEL_JSON_FORMAT", 
+                    "gdpr_justification": f"Unexpected model JSON format: {model_response_str}"}
+    except json.JSONDecodeError as je:
+        print(f"{log_prefix} ERRO CRÍTICO: Failed to decode model's JSON response string. Error: {je}")
+        return {"pii_sensitivity_assessment": "ERROR_MODEL_JSON_DECODE", 
+                "gdpr_justification": f"Model returned non-JSON string: {model_response_str[:200]}...", 
+                "exception": str(je)}
+
+def _handle_ollama_api_error(response, log_prefix, response_text_on_error):
+    """Handles errors from the Ollama API response itself (not model errors)."""
+    if "error" in response: # Structured error from Ollama API
+        print(f"{log_prefix} ERRO API Ollama: {response['error']}")
+        return {"pii_sensitivity_assessment": "ERROR_OLLAMA_API_STRUCTURED", 
+                "gdpr_justification": response['error']}
+    else: # Unexpected API response format
+        print(f"{log_prefix} ERRO: Unexpected Ollama API response format (no 'message' or 'error'): {str(response)[:200]}...")
+        return {"pii_sensitivity_assessment": "ERROR_OLLAMA_API_FORMAT", 
+                "gdpr_justification": f"Unexpected API response: {str(response)}"}
+
+
+def analyze_single_field_ollama(unique_field_key, field_description, current_count=0, total_count=0):
+    """
+    Orchestrates the analysis of a single field with Ollama using the chat API and structured prompts.
+    """
+    progress_log = f"({current_count}/{total_count})" if total_count > 0 else ""
+    log_prefix = f"[OLLAMA_CHAT {unique_field_key} {progress_log}]"
+    print(f"{log_prefix} Starting analysis...")
 
     filename_context, full_path_in_schema = unique_field_key.split("::", 1)
-    path_parts = full_path_in_schema.split('.')
-    field_name = path_parts[-1]
+    field_name = full_path_in_schema.split('.')[-1]
 
-    system_prompt = get_system_prompt()
-    if "ERRO: System prompt não carregado" in system_prompt:
-         return {"sensibilidade_rgpd": "ERRO_SYSTEM_PROMPT", "justificacao_rgpd": system_prompt}
+    field_info = {
+        "model_name_context": os.path.splitext(filename_context)[0],
+        "full_field_path": full_path_in_schema,
+        "field_name": field_name,
+        "field_description": field_description if field_description else "N/A"
+    }
 
-    # Construir a mensagem do utilizador específica para este campo
-    # O template do system_prompt já contém as instruções gerais e os critérios RGPD
-    # Agora precisamos apenas da parte variável para o campo atual.
-    user_message_content = f"""
-Analise o seguinte campo específico:
-Nome do Modelo/Ficheiro de Contexto: {os.path.splitext(filename_context)[0]}
-Caminho Completo da Chave no Esquema: {full_path_in_schema}
-Nome da Chave Final: {field_name}
-Descrição da Chave (do esquema): {field_description if field_description else "N/A"}
-
-Lembre-se de responder APENAS em formato JSON com as chaves "sensibilidade_rgpd" e "justificacao_rgpd" para ESTE campo.
-"""
-
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {"role": "user", "content": user_message_content}
-    ]
+    messages = _build_ollama_messages(field_info)
+    if messages is None: # Error loading prompt components
+        return {"pii_sensitivity_assessment": "ERROR_PROMPT_LOADING", 
+                "gdpr_justification": "Failed to load one or more prompt components."}
 
     payload = {
         "model": OLLAMA_MODEL,
         "messages": messages,
         "stream": False,
-        "format": "json" # Pedir explicitamente formato JSON na resposta do assistant
+        "format": "json" # Instruct Ollama that the *assistant's message content* should be JSON
     }
     
-    # --- Logging Detalhado do Pedido ---
-    print(f"{log_prefix} Endpoint: {OLLAMA_CHAT_ENDPOINT}")
-    # print(f"{log_prefix} Modelo: {OLLAMA_MODEL}") # Já no payload
-    # try:
-    #     payload_json_str = json.dumps(payload, indent=2, ensure_ascii=False)
-    #     print(f"{log_prefix} Payload JSON a ser enviado:\n{payload_json_str[:1500]}...") # Imprimir parte do payload
-    # except Exception as e:
-    #     print(f"{log_prefix} ERRO ao serializar payload para log: {e}")
-    # --- Fim do Logging Detalhado do Pedido ---
+    # print(f"{log_prefix} Payload to be sent (partial messages for brevity):")
+    # print(json.dumps({"model": OLLAMA_MODEL, "messages": [{"role": m["role"], "content": m["content"][:200] + "..."} for m in messages], "format": "json"}, indent=2))
 
-    analysis_result = {"sensibilidade_rgpd": "ERRO_DESCONHECIDO_OLLAMA_CHAT", "justificacao_rgpd": "Análise via chat não concluída."}
-    response_text_for_log_on_error = "Resposta não capturada antes do erro."
+
+    analysis_result = {"pii_sensitivity_assessment": "ERROR_OLLAMA_CALL_UNHANDLED", "gdpr_justification": "Ollama call did not complete as expected."}
+    response_text_for_log = "Response not captured."
+    http_status = "N/A"
 
     try:
-        print(f"{log_prefix} Enviando pedido POST para API de Chat...")
         response = requests.post(OLLAMA_CHAT_ENDPOINT, json=payload, timeout=OLLAMA_REQUEST_TIMEOUT)
-        response_text_for_log_on_error = response.text
-        print(f"{log_prefix} Resposta recebida. Status HTTP: {response.status_code}")
+        http_status = response.status_code
+        response_text_for_log = response.text
         
-        # Log da resposta bruta (manter conciso, a menos que depurando ativamente)
-        # print(f"{log_prefix} Resposta Bruta (início): {response_text_for_log_on_error[:300]}...")
+        print(f"{log_prefix} HTTP Status: {http_status}")
+        # print(f"{log_prefix} Raw Response (first 300 chars): {response_text_for_log[:300]}...") # Uncomment for deep debug
 
-        response.raise_for_status() 
-        response_data = response.json() # Resposta da API /api/chat
+        response.raise_for_status() # Raises HTTPError for 4xx/5xx
+        
+        response_data_json = response.json() # Parse the API's JSON response
 
-        # A resposta do modelo estará dentro de response_data["message"]["content"]
-        # e essa content DEVE ser uma string JSON por causa do "format": "json"
-        if "message" in response_data and isinstance(response_data["message"], dict) and "content" in response_data["message"]:
-            analysis_json_str = response_data["message"]["content"]
-            # print(f"{log_prefix} String JSON extraída de message.content: {analysis_json_str}")
-            try:
-                analysis_from_model = json.loads(analysis_json_str)
-                if isinstance(analysis_from_model, dict) and "sensibilidade_rgpd" in analysis_from_model and "justificacao_rgpd" in analysis_from_model:
-                    analysis_result = analysis_from_model
-                    # print(f"{log_prefix} String JSON interna parseada com sucesso.")
-                else:
-                    print(f"{log_prefix} ERRO: Resposta JSON interna (chat) não tem o formato esperado: {analysis_json_str[:200]}...")
-                    analysis_result = {"sensibilidade_rgpd": "ERRO_FORMATO_OLLAMA_CHAT_INTERNO", "justificacao_rgpd": f"Resposta inesperada: {analysis_json_str}"}
-            except json.JSONDecodeError as je:
-                print(f"{log_prefix} ERRO CRÍTICO: Falha ao decodificar JSON da string de resposta interna (chat): '{analysis_json_str[:200]}...' Erro: {je}")
-                analysis_result = {"sensibilidade_rgpd": "ERRO_DECODE_OLLAMA_CHAT_INTERNO", "justificacao_rgpd": analysis_json_str, "exception": str(je)}
-        elif "error" in response_data:
-            print(f"{log_prefix} ERRO estruturado retornado por Ollama (chat): {response_data['error']}")
-            analysis_result = {"sensibilidade_rgpd": "ERRO_API_OLLAMA_CHAT_ESTRUTURADO", "justificacao_rgpd": response_data['error']}
-        else: # Formato inesperado da resposta da API /api/chat
-            print(f"{log_prefix} ERRO: Formato inesperado da API /api/chat (sem 'message' ou 'error'): {str(response_data)[:200]}...")
-            analysis_result = {"sensibilidade_rgpd": "ERRO_FORMATO_API_CHAT_OLLAMA", "justificacao_rgpd": str(response_data)}
+        if "message" in response_data_json and isinstance(response_data_json["message"], dict) and "content" in response_data_json["message"]:
+            model_response_content_str = response_data_json["message"]["content"]
+            analysis_result = _parse_ollama_model_response(model_response_content_str, log_prefix)
+        else: # API response format is not as expected (e.g., no "message" or "content")
+            analysis_result = _handle_ollama_api_error(response_data_json, log_prefix, response_text_for_log)
             
-    except requests.exceptions.HTTPError as http_err:
-        print(f"{log_prefix} ERRO HTTP (chat): {http_err}. Resposta: {response_text_for_log_on_error[:300]}...")
-        analysis_result = {"sensibilidade_rgpd": "ERRO_HTTP_OLLAMA_CHAT", "justificacao_rgpd": response_text_for_log_on_error, "status_code": http_err.response.status_code if http_err.response else "N/A"}
-    # ... (outros blocos except como antes, ajustando a mensagem para indicar "_CHAT") ...
-    except requests.exceptions.Timeout:
-        print(f"{log_prefix} ERRO: Timeout ({OLLAMA_REQUEST_TIMEOUT}s) (chat).")
-        analysis_result = {"sensibilidade_rgpd": "ERRO_TIMEOUT_OLLAMA_CHAT", "justificacao_rgpd": f"Timeout de {OLLAMA_REQUEST_TIMEOUT}s"}
-    except requests.exceptions.RequestException as req_err:
-        print(f"{log_prefix} ERRO DE REQUESTS (chat): {req_err}")
-        analysis_result = {"sensibilidade_rgpd": "ERRO_REQUESTS_OLLAMA_CHAT", "justificacao_rgpd": str(req_err)}
-    except json.JSONDecodeError as json_err: # Se response.json() falhar
-        print(f"{log_prefix} ERRO DE DECODIFICAÇÃO JSON (resposta principal chat): {json_err}. Resposta: {response_text_for_log_on_error[:300]}...")
-        analysis_result = {"sensibilidade_rgpd": "ERRO_DECODE_JSON_RESPOSTA_PRINCIPAL_CHAT", "justificacao_rgpd": response_text_for_log_on_error, "exception": str(json_err)}
     except Exception as ex:
-        print(f"{log_prefix} ERRO CRÍTICO INESPERADO (chat): {ex}")
-        # print(traceback.format_exc()) 
-        analysis_result = {"sensibilidade_rgpd": "ERRO_INESPERADO_GERAL_OLLAMA_CHAT", "justificacao_rgpd": str(ex)}
+        analysis_result = utils._handle_ollama_request_exception(ex, log_prefix, response_text_for_log, http_status) # Use utils version
     
-    print(f"{log_prefix} Resultado: Sensibilidade='{analysis_result.get('sensibilidade_rgpd', 'N/A')}'")
+    print(f"{log_prefix} Result: Sensitivity='{analysis_result.get('pii_sensitivity_assessment', 'N/A')}'")
     return analysis_result

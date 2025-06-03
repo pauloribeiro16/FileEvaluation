@@ -1,0 +1,234 @@
+{
+  "GtfsAccessPoint.json::properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field represents a JSON schema metadata key, not actual data. It defines the data type of the parent property (e.g., string, integer) and does not contain personal information. Since it is schema metadata, it does not meet the criteria for personal data under GDPR. The justification is based on the fact that the field is not actual data and does not relate to a natural person."
+  },
+  "GtfsRoute.json::properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata field that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used to describe the structure of the data. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "GtfsRoute.json::properties.page": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'page' key in the GtfsRoute schema is a metadata property that defines the structure of the JSON document. It does not contain any actual data that would identify a specific natural person. The key itself is a schema metadata field, not a data field, and does not relate to personal information. Therefore, it does not fall under the GDPR criteria for personal data."
+  },
+  "GtfsRoute.json::properties.routeColor": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'routeColor' field represents a color value (e.g., '#FF0000') which is a non-sensitive, non-identifiable value that cannot be directly linked to a specific natural person. It does not contain any personally identifiable information and is purely a visual attribute. The field is a schema metadata property and does not store actual personal data, thus falling under the category of NOT_PERSONAL_DATA. However, since it is a schema property and could be used to infer information about the user (e.g., if the color is associated with a specific user profile), it is considered medium sensitivity based on the indirect identification criteria."
+  },
+  "GtfsRoute.json::properties.routeTextColor": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'routeTextColor' field represents a color value (e.g., '#FF0000') which is a numerical or symbolic representation of a visual attribute. It does not directly identify a specific natural person and cannot be reasonably linked to an individual through available means. While the value may indirectly contribute to identifying a user if combined with other data, the field itself does not contain personally identifiable information. The assessment considers the field as metadata related to the GTFS schema, which is not directly related to personal data."
+  },
+  "GtfsRoute.json::properties.routeType": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_LOW_SENSITIVITY",
+    "gdpr_justification": "The 'routeType' field is a metadata field that defines the type of GTFS route (e.g., 0, 1, 2, 3, 4, 5, 6, 7) and does not contain any actual personal data. It is a schema metadata field, not a data field that would be populated by a user or system. The field's value is an integer representing a type code, which is not directly or indirectly identifiable to a specific natural person. Therefore, it falls under the category of NOT_PERSONAL_DATA."
+  },
+  "GtfsRoute.json::properties.routeSortOrder": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'routeSortOrder' field represents a numerical value used to sort GTFS routes. It does not directly identify a specific individual but could be combined with other data (e.g., route ID, user ID) to indirectly identify a person. However, since it is a numerical value and does not contain any personally identifiable information (PII), it falls under medium sensitivity due to potential indirect identification risks when combined with other data."
+  },
+  "GtfsRoute.json::properties.operatedBy": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'operatedBy' field refers to an agency that operates a route. While it does not directly identify a specific natural person, it may be combined with other data (e.g., agency name, user_id) to indirectly identify individuals. However, the field itself does not contain direct identifiers like names or emails. The assessment considers the potential for indirect identification through contextual information, aligning with the GDPR's indirect identification criterion."
+  },
+  "GtfsRoute.json::properties.shortName": {
+    "pii_sensitivity_assessment": "ERROR_MODEL_JSON_FORMAT",
+    "gdpr_justification": "Unexpected model JSON format: {\n\n\n}"
+  },
+  "KeyCardSwitch.json::properties.rt": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'rt' key represents the Resource Type of the KeyCardSwitch, which is a metadata field defining the classification of the key. It does not contain any personally identifiable information and is not directly or indirectly linked to a natural person. The key is part of the schema structure and does not store or transmit any personal data."
+  },
+  "KeyCardSwitch.json::properties.stateofcard": {
+    "pii_sensitivity_assessment": "ERROR_MODEL_JSON_FORMAT",
+    "gdpr_justification": "Unexpected model JSON format: {\n\n\n}"
+  },
+  "KeyCardSwitch.json::properties.n": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'n' key is a JSON schema metadata field representing the property name. It does not contain any actual data and is solely used to describe the resource. As per GDPR criteria, metadata fields like 'type', 'description', and '$schema' are generally classified as NOT_PERSONAL_DATA unless their specific descriptions suggest otherwise."
+  },
+  "KeyCardSwitch.json::properties.if": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'if' field is a JSON schema metadata key that defines conditional logic within the schema structure. It does not contain actual user data and is not directly or indirectly related to the identification of a natural person. The field's purpose is to specify constraints on the schema, not to store or transmit personal information."
+  },
+  "KeyCardSwitch.json::properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain actual personal data and is solely used to describe the structure of the schema. As such, it does not directly or indirectly identify a natural person and falls under the category of schema metadata, which is classified as NOT_PERSONAL_DATA. However, the key name 'type' itself is a metadata field and not an actual data field, so it does not constitute personal data."
+  },
+  "ResourceReport.json::properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used to describe the structure of the schema. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.actuator": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'actuator' field is a metadata reference to a specific transport mechanism, not containing any personal data. It does not directly or indirectly identify a natural person and is purely a schema reference, not actual data."
+  },
+  "ResourceReport.json::properties.ResourceReport.actuator.properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used to describe the structure of the schema. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.actuator.properties.ActuatorType.preferredLabel": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'preferredLabel' field contains a list of preferred labels for actuator types, such as 'combustionEngine' and 'electric'. These labels do not directly identify a specific natural person. However, the field's information could be combined with other data (e.g., user_id, ip_address) to indirectly identify an individual. Therefore, the data meets the GDPR criteria for medium sensitivity as it is potentially identifiable through indirect means."
+  },
+  "ResourceReport.json::properties.ResourceReport.location": {
+    "pii_sensitivity_assessment": "SENSITIVE_LOCATION_DATA",
+    "gdpr_justification": "The 'location' field contains information that could directly or indirectly identify a natural person, such as a specific geographic location. While the exact identifier is not explicitly stated, the field's data could be combined with other information (e.g., timestamps, IP addresses) to identify an individual. This meets the GDPR criteria for sensitive location data, which requires careful handling due to potential identification risks."
+  },
+  "ResourceReport.json::properties.ResourceReport.location.properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata key that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used for schema definition. As per GDPR criteria, schema metadata does not qualify as personal data unless it explicitly contains identifiable information."
+  },
+  "ResourceReport.json::properties.ResourceReport.location.properties.object": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'object' key is a JSON schema metadata field representing the type of the nested object. It does not contain any actual personal data and is not related to a natural person. The key itself does not store or imply any information that could be used to identify an individual."
+  },
+  "ResourceReport.json::properties.ResourceReport.meansOfTransport": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'meansOfTransport' field contains information that relates to a natural person (a living individual) through the type of transport used. However, the field itself does not directly identify a specific individual (e.g., it is a general category like 'car', 'bus', 'train'). The information is identifiable indirectly if combined with other data, such as a user ID or IP address. Thus, it falls under medium sensitivity as it poses a moderate risk of identification."
+  },
+  "ResourceReport.json::properties.ResourceReport.meansOfTransport.properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata key that defines the data type of the parent property. It does not contain actual personal data. The field's description is N/A, indicating it is not a data field but a structural element. Since it is metadata and does not relate to a natural person, it does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.meansOfTransport.properties.MeansOfTransport.preferredLabel": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'preferredLabel' field contains a list of possible labels for transportation modes, such as 'airplane', 'bicycle', etc. These labels are not direct identifiers of a specific individual. However, if the field's information is combined with other data (e.g., 'user_id' or 'ip_address') to identify a natural person, it would constitute personal data. Since this field alone does not directly identify a specific individual, the sensitivity is medium. The field is a schema metadata field (e.g., 'enum' values) and does not contain actual personal data. Therefore, it is classified as medium sensitivity."
+  },
+  "ResourceReport.json::properties.ResourceReport.number": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'number' field represents the count of resources, which is a quantitative measure. It does not directly identify a specific natural person and lacks the necessary information to distinguish individuals. However, if the number is associated with a unique identifier (e.g., 'resourceID'), it could indirectly identify a person. Since the field's description does not include such a link, it is considered medium sensitivity as it may be used to infer information about individuals when combined with other data. The field does not contain direct identifiers, but its value could contribute to indirect identification in certain contexts."
+  },
+  "ResourceReport.json::properties.ResourceReport.reportTime": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'reportTime' field represents a point in time for which the report is valid. While it does not directly identify a specific natural person, it can be combined with other data (e.g., 'user_id', 'ip_address') to indirectly identify an individual. Thus, it falls under medium sensitivity as it poses a potential risk if combined with other information."
+  },
+  "ResourceReport.json::properties.ResourceReport.service": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'service' field is a schema metadata key that defines the type of mobility service used within the ResourceReport. It does not contain any actual personal data and is solely used to describe the service. The key itself does not represent any data that would be populated by a user or system, and thus does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.service.properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata key that defines the data type of the parent property. It does not contain any actual personal data and is not related to a natural person. The field is part of the schema structure and does not store or transmit any sensitive information."
+  },
+  "ResourceReport.json::properties.ResourceReport.service.properties.object": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'object' key represents a JSON schema metadata field that defines the structure of the report. It does not contain any actual data that would identify a natural person. The key itself is a structural element and does not store or imply personal information."
+  },
+  "ResourceReport.json::properties.ResourceReport.status": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_LOW_SENSITIVITY",
+    "gdpr_justification": "The 'status' field represents the state of a resource, such as 'reserved', 'inactive', or 'available'. It does not directly or indirectly identify a specific natural person. The information is generic and does not contain personally identifiable information. The GDPR criteria are not met as the field does not allow for direct or indirect identification of an individual."
+  },
+  "ResourceReport.json::properties.ResourceReport.status.properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata key that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used for schema validation. The field does not directly or indirectly identify a natural person and is not considered personal data under GDPR criteria."
+  },
+  "ResourceReport.json::properties.ResourceReport.status.properties.ResourceStatus.preferredLabel": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'preferredLabel' field contains a list of enum values such as 'available', 'deleted', etc., which are not directly identifying information. However, the field's content may indirectly identify a natural person if combined with other data (e.g., user_id, ip_address). Since the field itself does not contain personally identifiable information, it falls under medium sensitivity due to potential indirect identification risks when combined with other data."
+  },
+  "ResourceReport.json::properties.ResourceReport.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used to describe the structure of the resource. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.type.properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used for schema definition. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "ResourceReport.json::properties.ResourceReport.type.properties.ResourceType.preferredLabel": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'preferredLabel' field contains a textual label from an enum ('chargingStation', 'parkingSpace', etc.) that may identify a specific natural person indirectly through the context of the ResourceReport. However, the label itself does not directly identify an individual and is not a direct identifier. It is a generic label used for classification purposes, not a direct personal identifier. The data is not directly or indirectly identifiable without additional context, making it less sensitive than high sensitivity data."
+  },
+  "System_alerts.json::properties.id": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'id' field is a unique identifier within the system_alerts schema. It is a numerical value assigned to each alert, which does not directly or indirectly identify a specific natural person. The data is anonymized and cannot be used to distinguish an individual from others. Therefore, it does not meet the criteria for personal data under GDPR."
+  },
+  "System_alerts.json::properties.type": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata property that defines the data type of the parent property (e.g., string, integer). It does not contain any actual personal data and is solely used to describe the structure of the schema. Since it is metadata and not an actual data field, it does not meet the criteria for Personal Data under GDPR."
+  },
+  "System_alerts.json::properties.last_updated": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'last_updated' field contains a timestamp indicating when the data was last modified. This information is not directly tied to a specific natural person but can be combined with other data (e.g., user ID, IP address) to indirectly identify an individual. However, the timestamp alone does not provide sufficient information to directly identify a person, so the sensitivity is medium."
+  },
+  "System_alerts.json::properties.ttl": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'ttl' field represents the time until the data is refreshed, which is a numerical value. It does not directly or indirectly identify a specific natural person and is not linked to any personal information. The field is purely a metadata value and does not contain personal data."
+  },
+  "System_alerts.json::properties.version": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'version' field is a metadata property describing the version number of the GBFS feed. It does not contain any personal data and is purely informational. The field does not directly or indirectly identify a specific natural person, and it is not linked to any personal identifiers. Therefore, it falls under the category of NOT_PERSONAL_DATA."
+  },
+  "System_alerts.json::properties.data": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'data' property in the 'system_alerts' schema is an array of ad-hoc alerts, which typically do not contain personally identifiable information (PII). The field does not directly or indirectly identify a specific natural person, as the alerts are generic notifications. The information is not linked to an individual's identity and does not meet the criteria for personal data under GDPR."
+  },
+  "System_alerts.json::properties.data.properties.alerts": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'alerts' field is a JSON schema metadata key, specifically a property within the 'data' object, and does not represent actual data that would be populated by a user or system. It is a structural element of the schema, not containing any personal information."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.alert_id": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'alert_id' field is a numerical identifier assigned to an alert. It does not directly identify a specific natural person (e.g., no name, username, or other personal details). However, it could be combined with other data (e.g., system logs, timestamps, or user IDs) to indirectly identify a user. The field is metadata within the JSON schema and does not contain actual personal data. Therefore, it falls under 'NOT_PERSONAL_DATA' based on the GDPR criteria, but the classification here reflects the potential for indirect identification when combined with other data. The justification considers the field's role in system operations rather than containing personal data itself."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field represents a JSON schema metadata element, not actual user data. It defines the data type (e.g., string, integer) of the parent property. Since it is metadata and does not contain personal information, it does not meet the criteria for personal data under GDPR. The field does not directly or indirectly identify a natural person and is therefore classified as NOT_PERSONAL_DATA."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.times": {
+    "pii_sensitivity_assessment": "ERROR_MODEL_JSON_FORMAT",
+    "gdpr_justification": "Unexpected model JSON format: {\n\n\n}"
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.times.items.properties.start": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'start' field represents the start time of an alert, which is a timestamp. While it does not directly identify a specific natural person, it can be combined with other data (e.g., alert ID, user ID, IP address) to indirectly identify the individual. This meets the GDPR's indirect identification criterion, making it personal data with medium sensitivity."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.times.items.properties.end": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'end' field represents the end time of an alert, which is a timestamp. While it does not directly identify a specific natural person, it can be combined with other fields (e.g., alert ID, user ID) to indirectly identify the individual. The data is not pseudonymized and is not anonymized, so it falls under medium sensitivity due to potential indirect identification through combination with other data."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.station_ids": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'station_ids' field contains an array of identifiers for stations, which may be used to directly identify specific locations or entities. However, the identifiers themselves are not directly linked to a specific natural person unless combined with additional information. The data is anonymized at the station level, reducing the risk of direct identification. Nonetheless, the identifiers could potentially be linked to a specific individual if combined with other data, making the field sensitive but not high-risk."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.region_ids": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'region_ids' field contains an array of identifiers for regions, which may indirectly identify a natural person if combined with other data. However, the field itself does not directly identify an individual and is solely an identifier for regions, not specific individuals. The information is not directly or indirectly identifiable through this field alone. Therefore, it falls under medium sensitivity due to potential indirect identification risks when combined with other data sources."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.url": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'url' field is a JSON schema metadata field that defines the structure of the URL property. It does not contain actual personal data and is not directly or indirectly identifiable to a natural person. The field is part of the schema definition and does not store any user-specific information."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.summary": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'summary' field contains a short description of an alert for display to the customer. It does not directly identify a specific natural person and cannot be reasonably used to uniquely identify an individual through available means. While the information is personal, it lacks the necessary characteristics of direct or indirect identification that would trigger GDPR classification. The field is not pseudonymized and is anonymized in the context of the alert summary, making it less sensitive than highly identifiable data."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.description": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'description' field contains a detailed textual description of an alert. While it may not directly identify a specific individual, it can be combined with other data (e.g., alert type, timestamp, user ID) to indirectly identify a natural person. This aligns with the GDPR's indirect identification criterion. The information is not pseudonymized and lacks unique identifiers, but its context could potentially allow for identification if combined with other data sources."
+  },
+  "System_alerts.json::properties.data.properties.alerts.items.properties.last_updated": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'last_updated' field indicates the last time an alert was modified. While it does not directly identify a specific individual, it can be combined with other data (e.g., alert ID, user ID) to indirectly identify the affected individual. However, since the field itself does not contain direct identifiers like names or emails, it falls under medium sensitivity due to potential indirect identification risks when combined with additional data."
+  },
+  "UserID.json::properties.rt": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'rt' field represents a resource type, which is a metadata attribute of a system resource. It does not directly or indirectly identify a specific natural person. While the resource type may be relevant to the system's functionality, it does not contain personally identifiable information. The field is not associated with any personal data and is purely a schema metadata attribute."
+  },
+  "UserID.json::properties.userid": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'userid' field contains a unique identifier for a patient/user, which may be used to indirectly identify a natural person through combination with other data. However, it is a single unique identifier and does not directly identify an individual. The data is considered personal data due to its potential for re-identification when combined with additional information, but its sensitivity is moderate compared to other high-risk data types."
+  },
+  "UserID.json::properties.n": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'n' key represents a property description in the JSON schema metadata, not actual user data. It does not contain any information that would allow direct or indirect identification of a natural person. The key itself is a metadata label and does not store personal data."
+  },
+  "UserID.json::properties.if": {
+    "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+    "gdpr_justification": "The 'if' field is a conditional keyword within the JSON schema structure and does not store user data. It is metadata and does not relate to a natural person. The field's description indicates it defines the OCF Interface set supported by the Resource, which is not personal data."
+  },
+  "UserID.json::properties.type": {
+    "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+    "gdpr_justification": "The 'type' field is a JSON schema metadata field that defines the data type of its parent property (e.g., string, integer). It does not contain actual personal data and is not directly or indirectly identifiable to a natural person. The field's purpose is to describe the structure of the data, not to store personal information."
+  }
+}

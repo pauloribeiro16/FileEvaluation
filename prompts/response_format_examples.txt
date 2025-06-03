@@ -1,0 +1,25 @@
+Here are examples of the required JSON response format:
+
+Example 1 (High Sensitivity PII):
+{
+  "pii_sensitivity_assessment": "PERSONAL_DATA_HIGH_SENSITIVITY",
+  "gdpr_justification": "The 'userEmail' field typically contains a personal email address, which is a direct identifier of a natural person, allowing contact and identification. Direct Identification criterion applies."
+}
+
+Example 2 (Schema Metadata - Not PII):
+{
+  "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+  "gdpr_justification": "The 'type' field is JSON schema metadata defining the data type of its parent property (e.g., string, integer) and does not itself contain personal information."
+}
+
+Example 3 (Schema Keyword - Not PII):
+{
+  "pii_sensitivity_assessment": "NOT_PERSONAL_DATA",
+  "gdpr_justification": "The 'if' field is a conditional keyword within the JSON schema structure and does not store user data."
+}
+
+Example 4 (Medium Sensitivity PII):
+{
+  "pii_sensitivity_assessment": "PERSONAL_DATA_MEDIUM_SENSITIVITY",
+  "gdpr_justification": "The 'userAge' field, while personal data, may not directly identify an individual in isolation but contributes to identifiability when combined with other information. Indirect Identification criterion applies."
+}

@@ -1,0 +1,20 @@
+Based on the system instructions and GDPR criteria previously provided, please analyze the following specific JSON schema field:
+
+Schema/File Context: {model_name_context}
+Full Key Path in Schema: {full_field_path}
+Final Key Name: {field_name}
+Key Description (from schema): {field_description}
+
+Classify the PII sensitivity of THIS SCHEMA FIELD (not an example value) using ONE of the following categories:
+- NOT_PERSONAL_DATA
+- PERSONAL_DATA_LOW_SENSITIVITY
+- PERSONAL_DATA_MEDIUM_SENSITIVITY
+- PERSONAL_DATA_HIGH_SENSITIVITY
+- SENSITIVE_FINANCIAL_DATA
+- SPECIFIC_HEALTH_DATA
+- SENSITIVE_LOCATION_DATA
+- OTHER_SENSITIVE_DATA
+
+Provide a brief justification for your classification, explaining HOW the GDPR criteria apply (or do not apply) to this schema field. Be specific about whether identification is direct or indirect.
+
+Remember to respond ONLY with a single JSON object with the keys "pii_sensitivity_assessment" and "gdpr_justification". Refer to the format examples.
